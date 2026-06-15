@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Control Center</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>🛰️ Control Center</h1>
+    <div class="sys" id="sys"></div>
+  </header>
+
+  <main id="groups"></main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-box">
+      <div class="modal-head">
+        <span id="modal-title">Logs</span>
+        <div>
+          <label class="autorefresh">
+            <input type="checkbox" id="log-follow" checked /> follow
+          </label>
+          <button id="modal-close">✕</button>
+        </div>
+      </div>
+      <pre id="modal-logs">loading…</pre>
+    </div>
+  </div>
+
+  <footer>
+    <span id="status-line">connecting…</span>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

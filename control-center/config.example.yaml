@@ -1,0 +1,52 @@
+# Control Center configuration
+#
+# Copy this file to `config.yaml` and edit it to describe the bots / scripts
+# you already have on your Mac. Each entry is a process the Control Center
+# can start, stop, restart, monitor, and tail logs for.
+#
+# The Control Center NEVER places trades or talks to a broker itself. It only
+# supervises the programs YOU point it at. Your trading logic stays in your
+# own scripts; this dashboard just runs and watches them.
+
+# Where per-bot log files are written (relative to this file or absolute).
+log_dir: ./logs
+
+# Host/port for the dashboard. Bind to localhost so it's not exposed.
+host: 127.0.0.1
+port: 8765
+
+bots:
+  - id: momentum-trader
+    name: Momentum Trader
+    group: trading
+    description: Example trading bot. Replace command with your real script.
+    # Use a list (no shell) for safety, or set shell: true to use a string.
+    command: ["python3", "momentum_bot.py"]
+    cwd: /Users/you/bots/momentum
+    autorestart: true
+    env:
+      MODE: paper          # paper vs live — keep your own kill-switch in the bot!
+
+  - id: arb-scanner
+    name: Arbitrage Scanner
+    group: trading
+    command: "python3 scanner.py --exchange coinbase"
+    shell: true
+    cwd: /Users/you/bots/arb
+    autorestart: false
+
+  - id: price-monitor
+    name: Price / Health Monitor
+    group: monitoring
+    description: Watches prices/feeds and emits alerts.
+    command: ["python3", "monitor.py"]
+    cwd: /Users/you/bots/monitor
+    autorestart: true
+
+  - id: nightly-backup
+    name: Nightly Backup
+    group: other
+    command: "bash backup.sh"
+    shell: true
+    cwd: /Users/you/scripts
+    autorestart: false
