@@ -16,13 +16,24 @@ if [ ! -d "$VENV" ]; then
   "$VENV/bin/pip" install --quiet -r requirements.txt
 fi
 
-# Read host/port from the active config so the URL we print is correct.
-read -r HOST PORT < <("$VENV/bin/python" - <<'PY'
+# Read host/port/TLS/auth from the active config so we launch correctly.
+read -r HOST PORT CERT KEY AUTH < <("$VENV/bin/python" - <<'PY'
 from app.config import load_config
 c = load_config()
-print(c.host, c.port)
+print(c.host, c.port, c.tls.certfile or "-", c.tls.keyfile or "-", c.auth.enabled)
 PY
 )
 
-echo "Control Center → http://${HOST}:${PORT}"
-exec "$VENV/bin/uvicorn" app.main:app --host "$HOST" --port "$PORT"
+ARGS=(app.main:app --host "$HOST" --port "$PORT")
+SCHEME="http"
+if [ "$CERT" != "-" ] && [ "$KEY" != "-" ]; then
+  ARGS+=(--ssl-certfile "$CERT" --ssl-keyfile "$KEY")
+  SCHEME="https"
+fi
+
+if [ "$AUTH" = "True" ] && [ -z "${CC_PASSWORD:-}" ]; then
+  echo "NOTE: auth is enabled — set CC_PASSWORD (or auth.password_sha256 in config) or login will be impossible." >&2
+fi
+
+echo "Control Center → ${SCHEME}://${HOST}:${PORT}"
+exec "$VENV/bin/uvicorn" "${ARGS[@]}"

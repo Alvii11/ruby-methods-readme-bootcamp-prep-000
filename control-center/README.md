@@ -25,6 +25,8 @@ the Control Center runs and watches them as child processes.
 - **Log tailing** — per-bot stdout/stderr captured to `logs/<id>.log`, viewable
   live in the UI.
 - **System monitoring** — CPU, load average, memory, disk, host uptime.
+- **Remote access** — optional password login (signed session cookies) + TLS, so
+  you can safely reach it from your phone over an SSH tunnel or private network.
 
 Each bot runs in its own process group (`start_new_session`), so stopping a bot
 also stops any child processes it spawned.
@@ -98,26 +100,94 @@ tooling:
 | POST   | `/api/groups/{group}/stop`   | Stop every bot in a group.   |
 | GET    | `/api/system`                 | System health metrics.       |
 
+## Remote access (control it from your phone / anywhere)
+
+The dashboard can start arbitrary processes, so **any time it's reachable beyond
+localhost it must require a password and use TLS.** Built-in support for both:
+
+### 1. Turn on password login
+
+```bash
+export CC_PASSWORD='something-strong'     # the dashboard password
+```
+
+In `config.yaml`:
+
+```yaml
+auth:
+  enabled: true
+  password_env: CC_PASSWORD     # reads the env var above
+  session_hours: 12
+```
+
+Prefer not to use an env var? Store a hash instead (plaintext never touches the
+file):
+
+```bash
+./hash-password.sh 'something-strong'     # prints a sha256 digest
+```
+```yaml
+auth:
+  enabled: true
+  password_sha256: "<paste digest>"
+```
+
+With auth on, every request needs a signed session cookie; unauthenticated
+browsers are bounced to a login page and API calls get `401`. Cookies are
+HMAC-signed (set `auth.secret` or `$CC_SECRET` to keep sessions valid across
+restarts).
+
+### 2. Turn on TLS (HTTPS)
+
+```bash
+./gen-cert.sh                 # writes certs/cert.pem + certs/key.pem (self-signed)
+```
+```yaml
+tls:
+  certfile: ./certs/cert.pem
+  keyfile:  ./certs/key.pem
+```
+
+`run.sh` picks these up automatically and serves over `https://`. (Browsers warn
+on self-signed certs — expected; use a real cert if you have a domain.)
+
+### 3. Choose how to reach it
+
+| Method | How | Notes |
+|--------|-----|-------|
+| **SSH tunnel** (recommended) | `ssh -L 8765:127.0.0.1:8765 you@your-mac` then open `localhost:8765` | Keep `host: 127.0.0.1`. Nothing exposed; encrypted by SSH. Simplest + safest. |
+| **Tailscale / WireGuard** | Install on Mac + phone; reach the Mac's private IP | Set `host: 0.0.0.0`. Keep **auth on**. Private network, no public exposure. |
+| **LAN** | Set `host: 0.0.0.0`, hit the Mac's LAN IP | Auth + TLS **required**. Only as safe as your network. |
+
+> ⚠️ **Do not port-forward this to the public internet.** Even with auth, a
+> process-spawning dashboard is a big target. Use the SSH tunnel or a private
+> mesh (Tailscale) instead.
+
 ## Security notes
 
-- Binds to `127.0.0.1` by default — reachable only from your machine. **Do not**
-  expose it on `0.0.0.0` / the internet; it can start arbitrary processes and
-  has no authentication. If you need remote access, front it with something that
-  adds auth + TLS (e.g. an SSH tunnel or a reverse proxy).
-- `config.yaml` may reference scripts that hold secrets/credentials — it's
-  gitignored by default. Keep API keys in your bots' own env, not in the repo.
+- Defaults to `127.0.0.1` with no auth — fine for local-only use. Exposing it
+  beyond localhost without `auth.enabled: true` is unsafe; the app refuses to
+  start if auth is enabled but no password is configured.
+- `config.yaml` and `certs/` may hold secrets — both are gitignored. Keep broker
+  API keys in your bots' own env, not in the repo.
+- Sessions are cookie-based (`HttpOnly`, `SameSite=Strict`, `Secure` when TLS is
+  on). There's no rate-limiting on login — another reason to stay off the public
+  internet.
 
 ## Layout
 
 ```
 control-center/
 ├── app/
-│   ├── main.py          # FastAPI app + routes
+│   ├── main.py          # FastAPI app + routes + auth middleware
 │   ├── config.py        # config loading/validation
 │   ├── manager.py       # process supervisor (start/stop/monitor/logs)
 │   ├── monitoring.py    # system health metrics
-│   └── static/          # dashboard UI (HTML/CSS/JS)
+│   ├── auth.py          # password login + signed session cookies
+│   └── static/          # dashboard UI + login page (HTML/CSS/JS)
 ├── config.example.yaml
 ├── requirements.txt
-└── run.sh
+├── run.sh               # launch (venv + TLS aware)
+├── gen-cert.sh          # generate a self-signed TLS cert
+└── hash-password.sh     # hash a password for config
 ```

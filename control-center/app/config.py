@@ -23,12 +23,37 @@ class BotConfig:
 
 
 @dataclass
+class AuthConfig:
+    enabled: bool = False
+    # Plaintext password is read from this env var (preferred — keeps it out of
+    # the file). Alternatively store a sha256 hex digest of the password here.
+    password_env: str = "CC_PASSWORD"
+    password_sha256: str | None = None
+    # Cookie-signing secret. If unset, read from $CC_SECRET, else a random one
+    # is generated per process (restarts then invalidate existing sessions).
+    secret: str | None = None
+    session_hours: int = 12
+
+
+@dataclass
+class TLSConfig:
+    certfile: str | None = None
+    keyfile: str | None = None
+
+    @property
+    def enabled(self) -> bool:
+        return bool(self.certfile and self.keyfile)
+
+
+@dataclass
 class AppConfig:
     log_dir: Path
     host: str
     port: int
     bots: list[BotConfig]
     source_path: Path
+    auth: AuthConfig
+    tls: TLSConfig
 
 
 def _coerce_bot(raw: dict[str, Any]) -> BotConfig:
@@ -85,10 +110,27 @@ def load_config(path: Path | None = None) -> AppConfig:
     if not log_dir.is_absolute():
         log_dir = (path.parent / log_dir).resolve()
 
+    auth_raw = data.get("auth") or {}
+    auth = AuthConfig(
+        enabled=bool(auth_raw.get("enabled", False)),
+        password_env=str(auth_raw.get("password_env", "CC_PASSWORD")),
+        password_sha256=(str(auth_raw["password_sha256"]) if auth_raw.get("password_sha256") else None),
+        secret=(str(auth_raw["secret"]) if auth_raw.get("secret") else None),
+        session_hours=int(auth_raw.get("session_hours", 12)),
+    )
+
+    tls_raw = data.get("tls") or {}
+    tls = TLSConfig(
+        certfile=(str(tls_raw["certfile"]) if tls_raw.get("certfile") else None),
+        keyfile=(str(tls_raw["keyfile"]) if tls_raw.get("keyfile") else None),
+    )
+
     return AppConfig(
         log_dir=log_dir,
         host=str(data.get("host", "127.0.0.1")),
         port=int(data.get("port", 8765)),
         bots=bots,
         source_path=path,
+        auth=auth,
+        tls=tls,
     )

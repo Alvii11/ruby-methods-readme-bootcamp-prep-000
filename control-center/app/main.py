@@ -4,10 +4,11 @@ from __future__ import annotations
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import PlainTextResponse
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse, PlainTextResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
+from . import auth as auth_mod
 from .config import load_config
 from .manager import ProcessManager
 from .monitoring import system_metrics
@@ -17,14 +18,68 @@ STATIC_DIR = Path(__file__).resolve().parent / "static"
 config = load_config()
 manager = ProcessManager(config)
 
+# Paths reachable without a session (the login page and its assets).
+PUBLIC_PATHS = {"/login.html", "/style.css", "/api/login", "/api/logout", "/favicon.ico"}
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    if config.auth.enabled and auth_mod.configured_password_hash(config.auth) is None:
+        raise RuntimeError(
+            "auth.enabled is true but no password is set. Set the "
+            f"${config.auth.password_env} env var or auth.password_sha256 in config."
+        )
     yield
     manager.shutdown()
 
 
 app = FastAPI(title="Control Center", version="0.1.0", lifespan=lifespan)
+
+
+@app.middleware("http")
+async def require_auth(request: Request, call_next):
+    if not config.auth.enabled:
+        return await call_next(request)
+    path = request.url.path
+    if path in PUBLIC_PATHS:
+        return await call_next(request)
+    token = request.cookies.get(auth_mod.COOKIE_NAME)
+    if auth_mod.check_token(config.auth, token):
+        return await call_next(request)
+    if path.startswith("/api/"):
+        return JSONResponse({"detail": "authentication required"}, status_code=401)
+    return RedirectResponse("/login.html", status_code=302)
+
+
+@app.post("/api/login")
+async def login(request: Request):
+    body = await request.json()
+    password = str(body.get("password", ""))
+    if not auth_mod.verify_password(config.auth, password):
+        return JSONResponse({"detail": "invalid password"}, status_code=401)
+    token = auth_mod.make_token(config.auth)
+    resp = JSONResponse({"ok": True})
+    resp.set_cookie(
+        auth_mod.COOKIE_NAME,
+        token,
+        max_age=config.auth.session_hours * 3600,
+        httponly=True,
+        samesite="strict",
+        secure=config.tls.enabled,
+    )
+    return resp
+
+
+@app.post("/api/logout")
+def logout():
+    resp = JSONResponse({"ok": True})
+    resp.delete_cookie(auth_mod.COOKIE_NAME)
+    return resp
+
+
+@app.get("/api/auth")
+def auth_info() -> dict:
+    return {"enabled": config.auth.enabled}
 
 
 @app.get("/api/health")

@@ -11,9 +11,30 @@
 # Where per-bot log files are written (relative to this file or absolute).
 log_dir: ./logs
 
-# Host/port for the dashboard. Bind to localhost so it's not exposed.
+# Host/port for the dashboard.
+#   127.0.0.1  -> reachable only from this machine (default, safest).
+#   0.0.0.0    -> reachable from your network. ONLY do this with auth + TLS on.
 host: 127.0.0.1
 port: 8765
+
+# --- Remote access / authentication ----------------------------------------
+# Required whenever the dashboard is reachable beyond localhost — it can start
+# arbitrary processes, so never expose it unauthenticated.
+auth:
+  enabled: false           # set true to require a password
+  # Provide the password ONE of two ways:
+  #   1) env var (preferred):  export CC_PASSWORD='something-strong'
+  password_env: CC_PASSWORD
+  #   2) or a sha256 hash here (run ./hash-password.sh to generate):
+  # password_sha256: "<64-hex-char digest>"
+  session_hours: 12        # how long a login stays valid
+  # secret: "<random string>"   # cookie-signing key; else $CC_SECRET, else random per run
+
+# --- TLS (HTTPS) ------------------------------------------------------------
+# Encrypts traffic. Generate a self-signed cert with ./gen-cert.sh, then:
+tls:
+  certfile: null           # e.g. ./certs/cert.pem
+  keyfile: null            # e.g. ./certs/key.pem
 
 bots:
   - id: momentum-trader

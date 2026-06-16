@@ -170,6 +170,37 @@ document.getElementById("modal").onclick = (e) => {
   if (e.target.id === "modal") closeLogs();
 };
 
+// -- auth -------------------------------------------------------------------
+
+async function initAuth() {
+  try {
+    const info = await api("/api/auth");
+    if (info.enabled) {
+      const btn = document.getElementById("logout-btn");
+      btn.classList.remove("hidden");
+      btn.onclick = async () => {
+        await api("/api/logout", "POST").catch(() => {});
+        window.location.href = "/login.html";
+      };
+    }
+  } catch (e) {
+    // 401 here means the session expired — bounce to login.
+    if (String(e.message).startsWith("401")) window.location.href = "/login.html";
+  }
+}
+
+// If any poll returns 401 (session expired), send the user back to login.
+const _api = api;
+api = async function (path, method) {
+  try {
+    return await _api(path, method);
+  } catch (e) {
+    if (String(e.message).startsWith("401")) window.location.href = "/login.html";
+    throw e;
+  }
+};
+
+initAuth();
 setInterval(refresh, POLL_MS);
 setInterval(refreshLogs, POLL_MS);
 refresh();
