@@ -9,8 +9,8 @@ import signal
 import subprocess
 import threading
 import time
-from collections import deque
 from pathlib import Path
+from typing import Callable
 
 import psutil
 
@@ -32,6 +32,7 @@ class ManagedProcess:
         self.manual_stop = False
         self.restarts = 0
         self.last_exit_code: int | None = None
+        self.handled = False  # whether the supervisor processed this proc's exit
         # psutil handle for resource sampling (primed lazily).
         self._ps: psutil.Process | None = None
 
@@ -49,12 +50,18 @@ class ManagedProcess:
 
 
 class ProcessManager:
-    def __init__(self, config: AppConfig):
+    def __init__(
+        self,
+        config: AppConfig,
+        on_event: Callable[[str, dict], None] | None = None,
+    ):
         self.config = config
         self.bots: dict[str, BotConfig] = {b.id: b for b in config.bots}
         self.procs: dict[str, ManagedProcess] = {}
         self.log_dir = config.log_dir
         self.log_dir.mkdir(parents=True, exist_ok=True)
+        # Called with (event, status_dict) on "crash"/"exit"/"restart" transitions.
+        self._on_event = on_event
         self._lock = threading.RLock()
         self._stop_event = threading.Event()
         self._supervisor = threading.Thread(
@@ -240,14 +247,39 @@ class ProcessManager:
                         continue
                     if mp.last_exit_code is None:
                         self._reap(bot_id)
+                    # Process each exit exactly once; skip deliberate stops.
+                    if mp.manual_stop or mp.handled:
+                        continue
+                    mp.handled = True
+                    code = mp.last_exit_code
                     cfg = self.bots.get(bot_id)
-                    if cfg and cfg.autorestart and not mp.manual_stop:
+                    if cfg and cfg.autorestart:
                         prev_restarts = mp.restarts
-                        new = self.start(bot_id)  # noqa: F841 (re-registers proc)
-                        restarted = self.procs.get(bot_id)
-                        if restarted is not None:
-                            restarted.restarts = prev_restarts + 1
+                        try:
+                            self.start(bot_id)  # re-registers a fresh proc
+                            restarted = self.procs.get(bot_id)
+                            if restarted is not None:
+                                restarted.restarts = prev_restarts + 1
+                            self._emit("restart", bot_id, code)
+                        except Exception as exc:
+                            # Bad command/cwd: don't let it kill the supervisor.
+                            self._emit("crash", bot_id, code, error=str(exc))
+                    else:
+                        event = "crash" if code not in (0, None) else "exit"
+                        self._emit(event, bot_id, code)
             self._stop_event.wait(2.0)
+
+    def _emit(self, event: str, bot_id: str, code: int | None, error: str | None = None) -> None:
+        if self._on_event is None:
+            return
+        try:
+            payload = self.status(bot_id)
+            payload["event"] = event
+            payload["crash_code"] = code
+            payload["error"] = error
+            self._on_event(event, payload)
+        except Exception:
+            pass
 
 
 def _tail(fh, lines: int) -> list[str]:

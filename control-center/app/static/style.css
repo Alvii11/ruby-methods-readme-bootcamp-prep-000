@@ -160,7 +160,7 @@ footer {
 .login-box button { padding: 10px 12px; border-color: var(--blue); color: #6cb1ff; }
 .login-err { color: #ff8378; font-size: 13px; min-height: 16px; }
 
-#logout-btn { font-size: 12px; padding: 4px 10px; }
+#logout-btn, #test-alert-btn { font-size: 12px; padding: 4px 10px; }
 
 .modal {
   position: fixed; inset: 0;

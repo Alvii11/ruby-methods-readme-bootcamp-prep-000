@@ -200,7 +200,32 @@ api = async function (path, method) {
   }
 };
 
+async function initAlerts() {
+  try {
+    const info = await api("/api/alerts");
+    const btn = document.getElementById("test-alert-btn");
+    if (info.enabled && info.channels.length) {
+      btn.classList.remove("hidden");
+      btn.title = `channels: ${info.channels.join(", ")}`;
+      btn.onclick = async () => {
+        btn.disabled = true;
+        try {
+          await api("/api/alerts/test", "POST");
+          setStatus(`test alert sent via ${info.channels.join(", ")}`);
+        } catch (e) {
+          setStatus(`alert test failed: ${e.message}`, true);
+        } finally {
+          btn.disabled = false;
+        }
+      };
+    }
+  } catch (e) {
+    /* alerts unknown — leave button hidden */
+  }
+}
+
 initAuth();
+initAlerts();
 setInterval(refresh, POLL_MS);
 setInterval(refreshLogs, POLL_MS);
 refresh();

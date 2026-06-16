@@ -27,6 +27,8 @@ the Control Center runs and watches them as child processes.
 - **System monitoring** — CPU, load average, memory, disk, host uptime.
 - **Remote access** — optional password login (signed session cookies) + TLS, so
   you can safely reach it from your phone over an SSH tunnel or private network.
+- **Crash alerts** — get notified (macOS desktop, Slack, or email) the moment a
+  bot dies, so you don't have to watch the dashboard.
 
 Each bot runs in its own process group (`start_new_session`), so stopping a bot
 also stops any child processes it spawned.
@@ -99,6 +101,8 @@ tooling:
 | POST   | `/api/groups/{group}/start`  | Start every bot in a group.  |
 | POST   | `/api/groups/{group}/stop`   | Stop every bot in a group.   |
 | GET    | `/api/system`                 | System health metrics.       |
+| GET    | `/api/alerts`                 | Alert config + active channels.|
+| POST   | `/api/alerts/test`            | Send a test alert.           |
 
 ## Remote access (control it from your phone / anywhere)
 
@@ -163,6 +167,39 @@ on self-signed certs — expected; use a real cert if you have a domain.)
 > process-spawning dashboard is a big target. Use the SSH tunnel or a private
 > mesh (Tailscale) instead.
 
+## Crash alerts
+
+Get pinged when a bot dies instead of discovering it later. Enable in
+`config.yaml`:
+
+```yaml
+alerts:
+  enabled: true
+  on_crash: true       # non-zero exit you didn't trigger
+  on_exit: false       # clean exit (code 0) on its own
+  on_restart: false    # auto-restart fired after a death
+  desktop: true        # macOS notification (Linux: notify-send)
+  slack_webhook_env: CC_SLACK_WEBHOOK   # export the webhook URL
+  # email:             # optional SMTP (creds from env, not the file)
+  #   smtp_host: smtp.gmail.com
+  #   username_env: CC_SMTP_USER
+  #   password_env: CC_SMTP_PASS
+  #   recipients: [you@example.com]
+```
+
+How the events map:
+- A bot that **crashes** (non-zero exit) you didn't stop → `crash` alert.
+- A bot that **exits cleanly** on its own → `exit` alert (off by default).
+- An `autorestart` bot that dies → `restart` alert (it recovers; no `crash`).
+- Stopping a bot yourself → **no** alert.
+
+Each channel is best-effort and runs off-thread, so a flaky webhook never stalls
+the supervisor. Hit **🔔 Test alert** in the UI (or `POST /api/alerts/test`) to
+verify delivery. Slack uses an [incoming webhook][slack]; email uses SMTP with
+credentials pulled from env vars.
+
+[slack]: https://api.slack.com/messaging/webhooks
+
 ## Security notes
 
 - Defaults to `127.0.0.1` with no auth — fine for local-only use. Exposing it
@@ -184,6 +221,7 @@ control-center/
 │   ├── manager.py       # process supervisor (start/stop/monitor/logs)
 │   ├── monitoring.py    # system health metrics
 │   ├── auth.py          # password login + signed session cookies
+│   ├── notifier.py      # crash alerts (desktop / Slack / email)
 │   └── static/          # dashboard UI + login page (HTML/CSS/JS)
 ├── config.example.yaml
 ├── requirements.txt

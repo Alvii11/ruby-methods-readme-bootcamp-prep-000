@@ -46,6 +46,31 @@ class TLSConfig:
 
 
 @dataclass
+class EmailConfig:
+    smtp_host: str
+    smtp_port: int = 587
+    username_env: str = "CC_SMTP_USER"
+    password_env: str = "CC_SMTP_PASS"
+    use_tls: bool = True
+    sender: str | None = None
+    recipients: list[str] = field(default_factory=list)
+
+
+@dataclass
+class AlertsConfig:
+    enabled: bool = False
+    # Which transitions raise an alert.
+    on_crash: bool = True    # exited with a non-zero code (and not stopped by you)
+    on_exit: bool = False    # exited cleanly (code 0) on its own
+    on_restart: bool = False  # auto-restart kicked in after a death
+    # Channels.
+    desktop: bool = False                       # macOS notification via osascript
+    slack_webhook: str | None = None            # incoming-webhook URL (inline)
+    slack_webhook_env: str = "CC_SLACK_WEBHOOK"  # or read it from this env var
+    email: EmailConfig | None = None
+
+
+@dataclass
 class AppConfig:
     log_dir: Path
     host: str
@@ -54,6 +79,7 @@ class AppConfig:
     source_path: Path
     auth: AuthConfig
     tls: TLSConfig
+    alerts: AlertsConfig
 
 
 def _coerce_bot(raw: dict[str, Any]) -> BotConfig:
@@ -125,6 +151,30 @@ def load_config(path: Path | None = None) -> AppConfig:
         keyfile=(str(tls_raw["keyfile"]) if tls_raw.get("keyfile") else None),
     )
 
+    alerts_raw = data.get("alerts") or {}
+    email_raw = alerts_raw.get("email") or {}
+    email = None
+    if email_raw.get("smtp_host"):
+        email = EmailConfig(
+            smtp_host=str(email_raw["smtp_host"]),
+            smtp_port=int(email_raw.get("smtp_port", 587)),
+            username_env=str(email_raw.get("username_env", "CC_SMTP_USER")),
+            password_env=str(email_raw.get("password_env", "CC_SMTP_PASS")),
+            use_tls=bool(email_raw.get("use_tls", True)),
+            sender=(str(email_raw["sender"]) if email_raw.get("sender") else None),
+            recipients=[str(r) for r in (email_raw.get("recipients") or [])],
+        )
+    alerts = AlertsConfig(
+        enabled=bool(alerts_raw.get("enabled", False)),
+        on_crash=bool(alerts_raw.get("on_crash", True)),
+        on_exit=bool(alerts_raw.get("on_exit", False)),
+        on_restart=bool(alerts_raw.get("on_restart", False)),
+        desktop=bool(alerts_raw.get("desktop", False)),
+        slack_webhook=(str(alerts_raw["slack_webhook"]) if alerts_raw.get("slack_webhook") else None),
+        slack_webhook_env=str(alerts_raw.get("slack_webhook_env", "CC_SLACK_WEBHOOK")),
+        email=email,
+    )
+
     return AppConfig(
         log_dir=log_dir,
         host=str(data.get("host", "127.0.0.1")),
@@ -133,4 +183,5 @@ def load_config(path: Path | None = None) -> AppConfig:
         source_path=path,
         auth=auth,
         tls=tls,
+        alerts=alerts,
     )

@@ -1,6 +1,7 @@
 """FastAPI app: serves the dashboard UI and the control/monitoring API."""
 from __future__ import annotations
 
+import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -12,11 +13,13 @@ from . import auth as auth_mod
 from .config import load_config
 from .manager import ProcessManager
 from .monitoring import system_metrics
+from .notifier import Notifier
 
 STATIC_DIR = Path(__file__).resolve().parent / "static"
 
 config = load_config()
-manager = ProcessManager(config)
+notifier = Notifier(config.alerts)
+manager = ProcessManager(config, on_event=notifier.notify_event)
 
 # Paths reachable without a session (the login page and its assets).
 PUBLIC_PATHS = {"/login.html", "/style.css", "/api/login", "/api/logout", "/favicon.ico"}
@@ -90,6 +93,31 @@ def health() -> dict:
 @app.get("/api/system")
 def system() -> dict:
     return system_metrics()
+
+
+@app.get("/api/alerts")
+def alerts_status() -> dict:
+    a = config.alerts
+    channels = []
+    if a.desktop:
+        channels.append("desktop")
+    if a.slack_webhook or os.environ.get(a.slack_webhook_env):
+        channels.append("slack")
+    if a.email and a.email.recipients:
+        channels.append("email")
+    return {
+        "enabled": a.enabled,
+        "channels": channels,
+        "on": {"crash": a.on_crash, "exit": a.on_exit, "restart": a.on_restart},
+    }
+
+
+@app.post("/api/alerts/test")
+def alerts_test() -> dict:
+    if not config.alerts.enabled:
+        raise HTTPException(400, "alerts are disabled in config")
+    notifier.send("🛰️ Test alert", "If you can read this, Control Center alerts work.")
+    return {"ok": True, "sent": True}
 
 
 @app.get("/api/bots")

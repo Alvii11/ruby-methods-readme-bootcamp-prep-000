@@ -36,6 +36,28 @@ tls:
   certfile: null           # e.g. ./certs/cert.pem
   keyfile: null            # e.g. ./certs/key.pem
 
+# --- Crash alerts -----------------------------------------------------------
+# Get notified when a bot dies, so you don't have to watch the dashboard.
+alerts:
+  enabled: false
+  on_crash: true           # bot exited with a non-zero code (and you didn't stop it)
+  on_exit: false           # bot exited cleanly (code 0) on its own
+  on_restart: false        # auto-restart kicked in after a death
+  # Channels (enable any combination):
+  desktop: false           # macOS notification (Linux: notify-send) — local only
+  # Slack incoming webhook — paste the URL or keep it in an env var:
+  slack_webhook_env: CC_SLACK_WEBHOOK   # export CC_SLACK_WEBHOOK='https://hooks.slack.com/...'
+  # slack_webhook: "https://hooks.slack.com/services/XXX/YYY/ZZZ"
+  # Email via SMTP (credentials come from env vars, not this file):
+  # email:
+  #   smtp_host: smtp.gmail.com
+  #   smtp_port: 587
+  #   use_tls: true
+  #   username_env: CC_SMTP_USER     # export CC_SMTP_USER='you@gmail.com'
+  #   password_env: CC_SMTP_PASS     # export CC_SMTP_PASS='app-password'
+  #   sender: you@gmail.com
+  #   recipients: [you@gmail.com]
+
 bots:
   - id: momentum-trader
     name: Momentum Trader
