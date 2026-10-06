@@ -1,12 +1,14 @@
-# Fiction's Deadliest Characters
+# Who Is Fiction's Greatest World Destroyer?
 
-A 60-second Higgsfield production kit.
+A 60-second Higgsfield production kit for BlavkMist.
+
+- **Thumbnail / cover text:** WORLD DESTROYERS
 
 - **Format:** 9:16 vertical
 - **Target length:** 60 seconds
 - **Style:** dark cinematic documentary, black, charcoal and muted crimson. Non-graphic destruction. Spoiler warning in the opening frame.
 
-This compares deaths and destructive scope. It is not a mathematically verified ranking. Some characters cause deaths through military orders, and the size of a universe is not a population count.
+Each character is judged on what they destroyed, how they did it, and how far the destruction reached: a world's population, civilizations, planets, a timeline, a multiverse. Death tolls are shown where a story gives one, but they aren't directly comparable across these scales. This compares destruction It is not a mathematically verified ranking. Some characters cause deaths through military orders, and the size of a universe is not a population count.
 
 ## Script and edit timeline
 
@@ -14,7 +16,7 @@ Read at about 140–150 words per minute, with brief pauses. Record the narratio
 
 | Time | Voiceover | On-screen text | Visual and production |
 |------|-----------|----------------|-----------------------|
-| 0–4 s | "How many lives can one fictional character end? The scale gets terrifying." | FICTION'S DEADLIEST / SPOILERS | Black screen, rising field of tiny lights. Make this with editor graphics, no video generation. |
+| 0–4 s | "Who is fiction's greatest world destroyer? The scale gets terrifying." | WORLD DESTROYERS / SPOILERS | Black screen, rising field of tiny lights. Make this with editor graphics, no video generation. |
 | 4–11 s | "Darrow, the Reaper of Mars. One attack on Ganymede led to roughly ten million deaths." | DARROW / GANYMEDE: ~10.1 MILLION | Still of Darrow overlooking shattered orbital infrastructure. Add a slow editor zoom. |
 | 11–18 s | "Eren Yeager. The Rumbling killed eighty percent of humanity in his world." | EREN YEAGER / 80% OF HIS WORLD'S HUMANITY | Five-second animated shot of Titans in steam; precede it with a two-second hold on the starting image. |
 | 18–25 s | "AM left only five humans alive. Almost everyone else became a victim of its hatred." | AM / HUMANITY, EXCEPT FIVE | Still of a vast computer chamber. Overlay five small lights in the editor. |
@@ -22,11 +24,11 @@ Read at about 140–150 words per minute, with brief pauses. Record the narratio
 | 33–41 s | "Galactus consumes worlds. His total is unknown, but inhabited planets have been among his meals." | GALACTUS / MANY WORLDS / TOTAL UNKNOWN | Five-second planet-consumption shot, with the starting still held for three seconds. |
 | 41–49 s | "Zeno erased an entire future timeline. That's erased reality, not a measured death toll." | ZENO / FUTURE TIMELINE ERASED / TOTAL UNKNOWN | Still portrait. Use an editor white flash, then empty black. |
 | 49–57 s | "Anti-Monitor destroyed universes across an infinite multiverse. Ordinary numbers stop being useful." | ANTI-MONITOR / MULTIVERSAL DESTRUCTION | Five-second cosmic shot, with the starting still held for three seconds. |
-| 57–60 s | "Who belongs on this list?" | WHO DID WE MISS? / BLAVKMIST | Reuse an earlier frame, darken it, add the end card. |
+| 57–60 s | "So who is the greatest world destroyer?" | WHO DID WE MISS? / BLAVKMIST | Reuse an earlier frame, darken it, add the end card. |
 
 ## Clean voiceover copy
 
-> How many lives can one fictional character end? The scale gets terrifying.
+> Who is fiction's greatest world destroyer? The scale gets terrifying.
 >
 > Darrow, the Reaper of Mars. One attack on Ganymede led to roughly ten million deaths.
 >
@@ -42,7 +44,7 @@ Read at about 140–150 words per minute, with brief pauses. Record the narratio
 >
 > Anti-Monitor destroyed universes across an infinite multiverse. Ordinary numbers stop being useful.
 >
-> Who belongs on this list?
+> So who is the greatest world destroyer?
 
 ## Make the images first
 
@@ -162,7 +164,7 @@ Don't enable automatic top-ups for this experiment. Skip 4K generation, multi-sh
 
 **Suggested post caption:**
 
-> From ten million deaths to erased realities. Which fictional character should be in part two? Spoilers for Red Rising, Attack on Titan, Dune and Dragon Ball Super. Counts include indirect deaths; unknown totals stay unknown. #BlavkMist #SciFi #Fantasy
+> From planet killers to universe destroyers. Who is fiction's greatest world destroyer, and who should be in part two? Spoilers for Red Rising, Attack on Titan, Dune and Dragon Ball Super. Counts include indirect deaths; unknown totals stay unknown. #BlavkMist #WorldDestroyers #SciFi #Fantasy
 
 ## Fact notes and sources
 
