@@ -141,7 +141,7 @@ Set a total ceiling before running anything, for example 100 credits for a first
 
 | Run | Asset | Displayed cost | Running total | Keep/retry |
 |-----|-------|----------------|---------------|------------|
-| 1 | Rumbling still | | | |
+| 1 | Rumbling still (GPT Image 2.5, medium, 1K, 9:16) | 0.5 | 0.5 | draft v1, awaiting review |
 | 2 | AM still | | | |
 | 3 | Paul still | | | |
 | 4 | Frieza still | | | |
