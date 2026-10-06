@@ -276,7 +276,7 @@ The 20 beat prompts, the master image suffix and the shared motion rules are unc
 | Bonus | 07 Qu, 08 Qu descendants, 17 King, 18 Pennywise |
 | Final verdict | 19 Verdict, 20 Close |
 
-Fixes needed before generating the full set:
+Fixes needed before generating the full set (the .docx now fixes the end card, the Shorts references and the runtime note; the list below records them for the repo):
 
 - **Beat 20's editor text** still reads "WHO IS FICTION'S WORST DESTROYER?" from the old title. Change it to match "Fiction's Greatest Destroyers, Ranked", for example "WHO DID WE MISS?"
 - **Add a rank card** ("#10" to "#1") to each countdown section as an editor graphic.
@@ -317,10 +317,20 @@ Passed. Higgsfield's `sandbox_exec` sandbox runs ffmpeg 5.1, ImageMagick, Pillow
 - **Pronunciation:** a transcription heard "Paul Atreides" as "Paula Trades". Listen to that line before committing to this voice.
 - **Link:** [narration sample WAV](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261006_130637_86405678-907a-46e2-b80e-7fea4a8608ac.wav)
 
+### Pronunciation and pace test (run 4)
+
+- **Text:** a 56-word passage with "Eren Yeager", "A.M." (spelled with periods so it's read as letters), "Paul Atreides" and "Dune Messiah", plus three "At number…" reveals.
+- **Settings:** Desmond preset, Seed Audio 1.0, `speech_rate` −10, 48 kHz. The model voiced it more slowly; the audio wasn't stretched afterwards.
+- **Result:** 36.6 s. [test WAV](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261006_150550_ecfc3571-3827-4cb0-897c-a88aa86590b2.wav)
+- **Pronunciation (transcribed with no name hints):** "Paul Atreides" came back correct at 90% confidence, so the earlier "Paula Trades" was a small-model mishearing. "Eren Yeager" was correct at about 67%. "A.M." was read as letters. "Dune Messiah" came back as "June Messiah", which could be a mishearing or a soft D, so check it by ear.
+- **Pace:** about 92 words per minute overall, but about 170 while speaking. The model left about 17 s of silence in total, including 4.2 s and 3.0 s gaps between countdown entries. `speech_rate` −10 barely slowed the speaking itself; the extra time is pauses. The passage is unusually dense with section breaks, so a full section would land nearer the target, but not reliably at 150.
+- **Proposed fix for the full narration:** record section by section, then shorten any pause over about 1.5 s to 0.8–1.2 s in the edit, keeping the longer holds only for reveals. Cutting silence leaves the voice untouched. Measure the total against 150 words per minute before assembling.
+- **Timbre:** not yet approved. You need to listen.
+
 ### Style frame (run 3)
 
 - **Beat:** 03 Eren / Rumbling, 16:9, GPT Image 2.5, high quality, 2K (2688×1520).
-- **Review:** usable. The Titans are anatomically consistent, the Founding Titan's ribcage silhouette reads clearly top right, and the palette matches the violet/crimson lock. There are no victims, text or logos, and the road gives a clean lower third for captions. A centered 9:16 crop holds two Titans well but cuts most of the Founder, so a Short version should shift the crop right or keep the vertical still from run 1.
+- **Review:** approved by you for the landscape master. It is The Titans are anatomically consistent, the Founding Titan's ribcage silhouette reads clearly top right, and the palette matches the violet/crimson lock. There are no victims, text or logos, and the road gives a clean lower third for captions. A centered 9:16 crop holds two Titans well but cuts most of the Founder, so a Short version should shift the crop right or keep the vertical still from run 1.
 - **Link:** [style frame PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261006_130655_9e2316ea-9ab0-441e-9214-c348b852ca3e.png)
 
 All three assets are also saved in your Higgsfield generations.
@@ -332,14 +342,15 @@ Working ceiling for the first complete cut: 250 credits, including about 50 in r
 | Run | Asset | Settings | Credits | Running total | Status |
 |-----|-------|----------|---------|---------------|--------|
 | 1 | Rumbling still | GPT Image 2.5, medium, 1K, 9:16 | 0.5 | 0.5 | Kept for Shorts |
-| 2 | Narration sample: opening + #10 | Seed Audio 1.0, Desmond preset | 8.7 | 9.2 | Under review: pace and pronunciation |
-| 3 | Style frame: Eren / Rumbling | GPT Image 2.5, high, 2K, 16:9 | 2.75 | 11.95 | Usable; awaiting your approval |
+| 2 | Narration sample: opening + #10 | Seed Audio 1.0, Desmond preset | 8.7 | 9.2 | Too fast (about 165 wpm); replaced by a slower recording, not stretched |
+| 3 | Style frame: Eren / Rumbling | GPT Image 2.5, high, 2K, 16:9 | 2.75 | 11.95 | **Approved** for the landscape master |
+| 4 | Pronunciation and pace test | Seed Audio 1.0, Desmond, speech_rate −10, 48 kHz | 2.2 | 14.15 | Names OK in transcription; timbre awaiting your ear; pauses too long |
 
 **Estimates for the full set, from these quotes:** full narration at the same model about 52 credits. The remaining 19 beats at the style-frame setting about 52 credits. That leaves roughly 130 credits under the ceiling for coverage frames and the five hero animations. Quote each animation before generating.
 
 ## Fact-check and publication notes
 
-The claims, source types and available links are unchanged from the earlier package. See the [fact-check table](Worst_Destroyer_Master_Script.md#fact-check-and-publication-notes). Source links for the Qu, the Reapers, the Tyranids, Thanos, the official Frieza page, Archeopia and both Stephen King entries are embedded in the .docx but not yet copied here.
+The claims, source types and available links are unchanged from the earlier package. See the [fact-check table](Worst_Destroyer_Master_Script.md#fact-check-and-publication-notes). Source links for the Qu, the Reapers, the Tyranids, Thanos, the official Frieza page, Archeopia and both Stephen King entries are visible in the corrected .docx, but they still aren't copied here: when pasted into chat, each one arrived as a placeholder with no address. Paste the raw URLs as plain text.
 
 ## Ready-to-use description
 
