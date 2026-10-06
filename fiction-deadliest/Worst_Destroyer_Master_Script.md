@@ -2,7 +2,7 @@
 
 Complete master script and production package.
 
-> **Replaced in structure.** This is the first, chapter-based draft. The current version is a 10-to-1 countdown in `World_Destroyers_Complete_Master.docx`, with the ranking summarized in [Series_Plan.md](Series_Plan.md). The research, prompts and source notes here still apply.
+> **Replaced.** The current master is [Fiction's Greatest Destroyers, Ranked](Greatest_Destroyers_Ranked_Master.md). This file is kept only for its storyboard prompts and fact-check links.
 
 **BlavkMist Explores** | Books • Games • Anime • Comics • Horror
 

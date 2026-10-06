@@ -2,7 +2,7 @@
 
 A 60-second Higgsfield production kit for BlavkMist.
 
-> **Replaced.** This list format felt like name, number, next character, with no suspense. It's kept for its prompts, sources and credit log. The current plan is in [Series_Plan.md](Series_Plan.md) and [Worst_Destroyer_Master_Script.md](Worst_Destroyer_Master_Script.md). The six remaining stills here are paused.
+> **Replaced.** This list format felt like name, number, next character, with no suspense. It's kept for its prompts, sources and credit log. The current plan is in [Series_Plan.md](Series_Plan.md) and [Greatest_Destroyers_Ranked_Master.md](Greatest_Destroyers_Ranked_Master.md). The six remaining stills here are paused.
 
 - **Thumbnail / cover text:** WORLD DESTROYERS
 
@@ -143,7 +143,7 @@ Set a total ceiling before running anything, for example 100 credits for a first
 
 | Run | Asset | Displayed cost | Running total | Keep/retry |
 |-----|-------|----------------|---------------|------------|
-| 1 | Rumbling still (GPT Image 2.5, medium, 1K, 9:16) | 0.5 | 0.5 | draft v1; moved to the "Could We Survive It?" Rumbling video |
+| 1 | Rumbling still (GPT Image 2.5, medium, 1K, 9:16) | 0.5 | 0.5 | kept for Shorts; full log continues in Greatest_Destroyers_Ranked_Master.md |
 | 2 | AM still | | | |
 | 3 | Paul still | | | |
 | 4 | Frieza still | | | |
