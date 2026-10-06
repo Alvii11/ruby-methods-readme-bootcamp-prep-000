@@ -17,10 +17,10 @@ Read at about 140–150 words per minute, with brief pauses. Record the narratio
 | Time | Voiceover | On-screen text | Visual and production |
 |------|-----------|----------------|-----------------------|
 | 0–4 s | "Who is fiction's greatest world destroyer? The scale gets terrifying." | WORLD DESTROYERS / SPOILERS | Black screen, rising field of tiny lights. Make this with editor graphics, no video generation. |
-| 4–11 s | "Darrow, the Reaper of Mars. One attack on Ganymede led to roughly ten million deaths." | DARROW / GANYMEDE: ~10.1 MILLION | Still of Darrow overlooking shattered orbital infrastructure. Add a slow editor zoom. |
-| 11–18 s | "Eren Yeager. The Rumbling killed eighty percent of humanity in his world." | EREN YEAGER / 80% OF HIS WORLD'S HUMANITY | Five-second animated shot of Titans in steam; precede it with a two-second hold on the starting image. |
-| 18–25 s | "AM left only five humans alive. Almost everyone else became a victim of its hatred." | AM / HUMANITY, EXCEPT FIVE | Still of a vast computer chamber. Overlay five small lights in the editor. |
-| 25–33 s | "Paul Atreides. The war fought in his name killed sixty-one billion people." | PAUL ATREIDES / 61 BILLION / WAR IN HIS NAME | Desert ruler still, slow editor push-in. Counter is an editor overlay. |
+| 4–11 s | "Eren Yeager. The Rumbling killed eighty percent of humanity in his world." | EREN YEAGER / 80% OF HIS WORLD'S HUMANITY | Five-second animated shot of Titans in steam; precede it with a two-second hold on the starting image. |
+| 11–18 s | "AM left only five humans alive. Almost everyone else became a victim of its hatred." | AM / HUMANITY, EXCEPT FIVE | Still of a vast computer chamber. Overlay five small lights in the editor. |
+| 18–26 s | "Paul Atreides. The war fought in his name killed sixty-one billion people." | PAUL ATREIDES / 61 BILLION / WAR IN HIS NAME | Desert ruler still, slow editor push-in. Counter is an editor overlay. |
+| 26–33 s | "Frieza destroyed Planet Vegeta with one attack, wiping out nearly the entire Saiyan race." | FRIEZA / PLANET VEGETA DESTROYED / SAIYANS NEARLY EXTINCT | Still of Frieza above the planet with his energy sphere. Slow editor push-in, then a hard cut to black on "wiping out." |
 | 33–41 s | "Galactus consumes worlds. His total is unknown, but inhabited planets have been among his meals." | GALACTUS / MANY WORLDS / TOTAL UNKNOWN | Five-second planet-consumption shot, with the starting still held for three seconds. |
 | 41–49 s | "Zeno erased an entire future timeline. That's erased reality, not a measured death toll." | ZENO / FUTURE TIMELINE ERASED / TOTAL UNKNOWN | Still portrait. Use an editor white flash, then empty black. |
 | 49–57 s | "Anti-Monitor destroyed universes across an infinite multiverse. Ordinary numbers stop being useful." | ANTI-MONITOR / MULTIVERSAL DESTRUCTION | Five-second cosmic shot, with the starting still held for three seconds. |
@@ -30,13 +30,13 @@ Read at about 140–150 words per minute, with brief pauses. Record the narratio
 
 > Who is fiction's greatest world destroyer? The scale gets terrifying.
 >
-> Darrow, the Reaper of Mars. One attack on Ganymede led to roughly ten million deaths.
->
 > Eren Yeager. The Rumbling killed eighty percent of humanity in his world.
 >
 > AM left only five humans alive. Almost everyone else became a victim of its hatred.
 >
 > Paul Atreides. The war fought in his name killed sixty-one billion people.
+>
+> Frieza destroyed Planet Vegeta with one attack, wiping out nearly the entire Saiyan race.
 >
 > Galactus consumes worlds. His total is unknown, but inhabited planets have been among his meals.
 >
@@ -48,7 +48,7 @@ Read at about 140–150 words per minute, with brief pauses. Record the narratio
 
 ## Make the images first
 
-Make seven separate vertical stills. Use a character reference if the selected model supports it. Darrow's appearance should follow a chosen book description or a consistent reference, not an invented "official" movie appearance. A good still saves you an expensive video reroll.
+Make seven separate vertical stills. Use a character reference if the selected model supports it. Show Frieza in his first form, the one he used when he destroyed Planet Vegeta, rather than his better-known final form. A good still saves you an expensive video reroll.
 
 Append this style direction to each image prompt:
 
@@ -56,25 +56,25 @@ Append this style direction to each image prompt:
 
 ### Seven starting-image prompts
 
-1. **Darrow**
-   > Darrow, the Reaper of Mars from Red Rising, a tall scarred young warrior with golden eyes and long tawny hair, wearing dark futuristic armor, viewed from behind in three-quarter profile overlooking a ruined orbital shipyard above a moon. Broken station sections hang against space. Somber documentary composition, no sword action.
-
-   Settle his appearance with a reference before animating anything.
-
-2. **Eren / Rumbling**
+1. **Eren / Rumbling**
    > Attack on Titan's Rumbling, low wide view from an empty ruined coastal city toward a line of towering skinless Wall Titans emerging from dense steam, distant rib-like silhouette of Eren's Founding Titan behind them. Monumental scale, anatomically consistent giants, no visible victims.
 
    Keep the number of foreground Titans small so the model can maintain their shapes.
 
-3. **AM**
+2. **AM**
    > AM from I Have No Mouth, and I Must Scream represented as a vast underground supercomputer, black machinery extending into darkness, a single red optical light, oppressive industrial scale, abandoned human world, no human face, no lettering.
 
    Add the five survivor dots in the editor, not through generated imagery.
 
-4. **Paul**
+3. **Paul**
    > Paul Atreides from Dune, dark-haired young desert emperor in a stillsuit and black cloak, blue-within-blue eyes, standing motionless above a vast desert city, distant banners and ships, grave expression, cinematic literary interpretation.
 
    No crowd close-ups or lip movement.
+
+4. **Frieza**
+   > Frieza from Dragon Ball, first form: small horned alien with white and purple armor-like body and a long tail, floating calmly in space with one finger raised, a giant glowing orange-red energy sphere above his finger, a large reddish planet below. Faithful stylized anime proportions, cold smirk, crimson planet glow, no explosion yet.
+
+   Stop before the explosion. The hard cut to black in the editor sells the destruction better than a generated blast.
 
 5. **Galactus**
    > Marvel comics Galactus, recognizable purple angular helmet and cosmic armor, immense figure towering beside an inhabited planet, a thin luminous energy stream connects the planet to his hand, stars in deep black space, planet on lower right and face on upper left.
@@ -139,10 +139,10 @@ Set a total ceiling before running anything, for example 100 credits for a first
 
 | Run | Asset | Displayed cost | Running total | Keep/retry |
 |-----|-------|----------------|---------------|------------|
-| 1 | Darrow still | | | |
-| 2 | Rumbling still | | | |
-| 3 | AM still | | | |
-| 4 | Paul still | | | |
+| 1 | Rumbling still | | | |
+| 2 | AM still | | | |
+| 3 | Paul still | | | |
+| 4 | Frieza still | | | |
 | 5 | Galactus still | | | |
 | 6 | Zeno still | | | |
 | 7 | Anti-Monitor still | | | |
@@ -164,18 +164,18 @@ Don't enable automatic top-ups for this experiment. Skip 4K generation, multi-sh
 
 **Suggested post caption:**
 
-> From planet killers to universe destroyers. Who is fiction's greatest world destroyer, and who should be in part two? Spoilers for Red Rising, Attack on Titan, Dune and Dragon Ball Super. Counts include indirect deaths; unknown totals stay unknown. #BlavkMist #WorldDestroyers #SciFi #Fantasy
+> From planet killers to universe destroyers. Who is fiction's greatest world destroyer, and who should be in part two? Spoilers for Attack on Titan, Dune and Dragon Ball. Counts include indirect deaths; unknown totals stay unknown. #BlavkMist #WorldDestroyers #SciFi #Fantasy
 
 ## Fact notes and sources
 
-- **Darrow:** a quoted passage from *Iron Gold* reports 100,000 deaths in the dockyards and 10 million when wreckage fell on New Troy, rounded here to roughly ten million. The passage is reproduced in a reader discussion rather than a publisher-hosted excerpt, so check it against your edition before publishing an exact figure.
-  <https://www.reddit.com/r/redrising/comments/1twe8uz/ganymede_morning_star/>
 - **Eren:** the 80% refers to his fictional world, not Earth's current population. Don't convert it to a modern-Earth number.
   <https://attackontitan.fandom.com/wiki/Rumbling>
 - **AM:** the short story leaves five humans alive after AM exterminates the rest.
   <https://www.litcharts.com/lit/i-have-no-mouth-and-i-must-scream/themes/humanity-vs-technology>
 - **Paul:** 61 billion is the war's toll stated in *Dune Messiah*, not the number Paul personally killed.
   <https://en.wikipedia.org/wiki/Dune_Messiah>
+- **Frieza:** destroyed Planet Vegeta with a single energy attack, fearing a Saiyan uprising and the legend of the Super Saiyan. Vegeta, Nappa and Raditz were away on a mission, and Goku had been sent to Earth, so "nearly the entire Saiyan race" is accurate; "the entire race" is not.
+  <https://en.wikipedia.org/wiki/Frieza>
 - **Galactus:** no verified lifetime total, and not every planet he consumes is inhabited.
   <https://www.marvel.com/teams-and-groups/heralds-of-galactus>
   <https://www.marvel.com/characters/ego/in-comics/>

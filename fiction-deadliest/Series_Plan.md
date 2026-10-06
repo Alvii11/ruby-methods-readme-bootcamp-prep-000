@@ -61,7 +61,7 @@ Aim for 6–8 minutes. The sections climb in reach, and each one answers a diffe
 
 | Section | Reach | Examples | Main question |
 |---------|-------|----------|---------------|
-| War and leadership | Civilizations | Darrow, Paul | How do we count destruction caused through orders? |
+| War and leadership | Civilizations, planets | Paul, Frieza | How do we count destruction caused through orders? |
 | Extermination | A world's people | Eren, AM | What separates mass killing from ending a world? |
 | Consumption | Planets | Galactus, Tyranids | Does destroying worlds to survive change how we judge them? |
 | Transformation | A species | The Qu | Is remaking a species another way of destroying its world? |
