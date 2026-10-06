@@ -20,7 +20,7 @@ Read at about 140–150 words per minute, with brief pauses. Record the narratio
 | 4–11 s | "Eren Yeager. The Rumbling killed eighty percent of humanity in his world." | EREN YEAGER / 80% OF HIS WORLD'S HUMANITY | Five-second animated shot of Titans in steam; precede it with a two-second hold on the starting image. |
 | 11–18 s | "AM left only five humans alive. Almost everyone else became a victim of its hatred." | AM / HUMANITY, EXCEPT FIVE | Still of a vast computer chamber. Overlay five small lights in the editor. |
 | 18–26 s | "Paul Atreides. The war fought in his name killed sixty-one billion people." | PAUL ATREIDES / 61 BILLION / WAR IN HIS NAME | Desert ruler still, slow editor push-in. Counter is an editor overlay. |
-| 26–33 s | "Frieza destroyed Planet Vegeta with one attack, wiping out nearly the entire Saiyan race." | FRIEZA / PLANET VEGETA DESTROYED / SAIYANS NEARLY EXTINCT | Still of Frieza above the planet with his energy sphere. Slow editor push-in, then a hard cut to black on "wiping out." |
+| 26–33 s | "Frieza's empire emptied planets to sell them. He destroyed Planet Vegeta, and later Earth." | FRIEZA / PLANET DEALER / VEGETA + EARTH DESTROYED | Still of Frieza above the planet with his energy sphere. Slow editor push-in, then a hard cut to black on "and later Earth." |
 | 33–41 s | "Galactus consumes worlds. His total is unknown, but inhabited planets have been among his meals." | GALACTUS / MANY WORLDS / TOTAL UNKNOWN | Five-second planet-consumption shot, with the starting still held for three seconds. |
 | 41–49 s | "Zeno erased an entire future timeline. That's erased reality, not a measured death toll." | ZENO / FUTURE TIMELINE ERASED / TOTAL UNKNOWN | Still portrait. Use an editor white flash, then empty black. |
 | 49–57 s | "Anti-Monitor destroyed universes across an infinite multiverse. Ordinary numbers stop being useful." | ANTI-MONITOR / MULTIVERSAL DESTRUCTION | Five-second cosmic shot, with the starting still held for three seconds. |
@@ -36,7 +36,7 @@ Read at about 140–150 words per minute, with brief pauses. Record the narratio
 >
 > Paul Atreides. The war fought in his name killed sixty-one billion people.
 >
-> Frieza destroyed Planet Vegeta with one attack, wiping out nearly the entire Saiyan race.
+> Frieza's empire emptied planets to sell them. He destroyed Planet Vegeta, and later Earth.
 >
 > Galactus consumes worlds. His total is unknown, but inhabited planets have been among his meals.
 >
@@ -174,8 +174,9 @@ Don't enable automatic top-ups for this experiment. Skip 4K generation, multi-sh
   <https://www.litcharts.com/lit/i-have-no-mouth-and-i-must-scream/themes/humanity-vs-technology>
 - **Paul:** 61 billion is the war's toll stated in *Dune Messiah*, not the number Paul personally killed.
   <https://en.wikipedia.org/wiki/Dune_Messiah>
-- **Frieza:** destroyed Planet Vegeta with a single energy attack, fearing a Saiyan uprising and the legend of the Super Saiyan. Vegeta, Nappa and Raditz were away on a mission, and Goku had been sent to Earth, so "nearly the entire Saiyan race" is accurate; "the entire race" is not.
+- **Frieza:** his empire (the Planet Trade Organization) conquered planets, wiped out their inhabitants and sold the worlds. He destroyed Planet Vegeta with a single energy attack, fearing a Saiyan uprising and the legend of the Super Saiyan. The Saiyans were a small warrior race and no official total exists, so the line doesn't claim a death count for Vegeta. In *Resurrection 'F'* he blew up Earth, and Whis rewound time to undo it. That counts under this video's rule that reversed events still count, which the post caption states.
   <https://en.wikipedia.org/wiki/Frieza>
+  <https://www.kanzenshuu.com/forum/viewtopic.php?p=1134496>
 - **Galactus:** no verified lifetime total, and not every planet he consumes is inhabited.
   <https://www.marvel.com/teams-and-groups/heralds-of-galactus>
   <https://www.marvel.com/characters/ego/in-comics/>
