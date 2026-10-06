@@ -2,6 +2,8 @@
 
 Complete master script and production package.
 
+> **Replaced in structure.** This is the first, chapter-based draft. The current version is a 10-to-1 countdown in `World_Destroyers_Complete_Master.docx`, with the ranking summarized in [Series_Plan.md](Series_Plan.md). The research, prompts and source notes here still apply.
+
 **BlavkMist Explores** | Books • Games • Anime • Comics • Horror
 
 - 1,569 spoken words, about 11–12 minutes with pauses

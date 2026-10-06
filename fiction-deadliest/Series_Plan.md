@@ -24,7 +24,26 @@ The first plan was a 60-second list: name, destruction, number, next character. 
 
 Full package: [Worst_Destroyer_Master_Script.md](Worst_Destroyer_Master_Script.md). About 11–12 minutes, 16:9.
 
-The angle: the biggest body count and the worst destroyer can be different winners. It ends with three verdicts: Paul for a stated death toll, Anti-Monitor for destructive reach, AM for cruelty. Ten Shorts can be cut from its chapters after the master is reviewed.
+The angle: the biggest body count and the worst destroyer can be different winners. The first draft ended with three verdicts: Paul for a stated death toll, Anti-Monitor for destructive reach, AM for cruelty. Ten Shorts can be cut from its chapters after the master is reviewed.
+
+### Ranked version: 10-to-1 countdown
+
+The master has been rewritten as a countdown, kept in `World_Destroyers_Complete_Master.docx` (not yet in this repo). It ranks **demonstrated destructive scale**, with confirmed body counts shown alongside. The cruelty comparison is the ending twist.
+
+| Rank | Destroyer | Placement note |
+|------|-----------|----------------|
+| 10 | Eren Yeager | 80% of his world's humanity; planet intact |
+| 9 | AM | All humanity except five; comes back in the cruelty twist |
+| 8 | Frieza | Planet Vegeta destroyed; Earth destroyed, then reversed |
+| 7 | Paul Atreides | 61 billion, indirect, across many worlds |
+| 6 | Tyranids | Worlds stripped of life; total unknown (editorial) |
+| 5 | The Reapers | Recurring galactic harvests; total unknown (editorial) |
+| 4 | Galactus | Repeated planet consumption; total unknown (editorial) |
+| 3 | Thanos | Half of all life in a universe; reversed |
+| 2 | Zeno | Erasure of a whole timeline, not a proven higher death count than Thanos |
+| 1 | Anti-Monitor | Infinite multiverse devastated; later restored |
+
+Places 4–6 are editorial and debatable because their lifetime totals are unknown. The Qu and Stephen King's creatures stay in the bonus section.
 
 ## First World Destroyers Short: Eren → Galactus → Anti-Monitor
 
