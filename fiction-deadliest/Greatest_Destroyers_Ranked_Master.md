@@ -9,7 +9,7 @@
 - **Thumbnail text:** DEADLIEST IN FICTION?
 - **Caption qualifier:** ranked by destructive reach; exact body counts where known.
 
-Source: `World_Destroyers_Complete_Master.docx` (latest version). This replaces the unranked package in [Worst_Destroyer_Master_Script.md](Worst_Destroyer_Master_Script.md); that file is kept only for its storyboard prompts and source links. The .docx has its source links embedded; copying its text lost them, so the links below come from earlier research.
+**This repo file is the production source.** It includes the corrections and source links from the final `World_Destroyers_Complete_Master.docx`, so the .docx doesn't need to be transferred. It replaces the unranked package in [Worst_Destroyer_Master_Script.md](Worst_Destroyer_Master_Script.md); that file is kept only for its storyboard prompts.
 
 ## The angle
 
@@ -350,7 +350,27 @@ Working ceiling for the first complete cut: 250 credits, including about 50 in r
 
 ## Fact-check and publication notes
 
-The claims, source types and available links are unchanged from the earlier package. See the [fact-check table](Worst_Destroyer_Master_Script.md#fact-check-and-publication-notes). Source links for the Qu, the Reapers, the Tyranids, Thanos, the official Frieza page, Archeopia and both Stephen King entries are visible in the corrected .docx, but they still aren't copied here: when pasted into chat, each one arrived as a placeholder with no address. Paste the raw URLs as plain text.
+This repo file is the production source. It includes the corrections from the final .docx (end card, Shorts references, runtime note) and all of its source links. Sources checked October 6, 2026. In the final publication notes, cite the book, film or game itself. The narration reproduces no dialogue or prose from these works.
+
+| Entry | Claim | Source type | Link |
+|-------|-------|-------------|------|
+| Eren | 80% of his fictional humanity; no modern-Earth conversion | *Attack on Titan* ending; secondary reference | <https://attackontitan.fandom.com/wiki/Rumbling> |
+| AM | Humanity exterminated except five; starting population unspecified | *I Have No Mouth, and I Must Scream* (1967), Harlan Ellison; literary analysis | <https://www.litcharts.com/lit/i-have-no-mouth-and-i-must-scream/themes/humanity-vs-technology> |
+| Frieza: Vegeta | Planet Vegeta and most Saiyans destroyed | Official Dragon Ball account | <https://en.dragon-ball-official.com/news/01_677.html> |
+| Frieza: Earth | Earth destroyed, then a time rewind prevents it | *Dragon Ball Z: Resurrection 'F'* (2015). Cite the film | — |
+| Frieza: trading | Conquering and selling differ from physically destroying a planet | Secondary reference to *Dragon Ball Super* manga Bonus Story 4; check your edition for a direct quote | — |
+| Paul Atreides | 61 billion is the jihad's death toll, not personal kills | *Dune Messiah* (1969), Frank Herbert; secondary synopsis | <https://en.wikipedia.org/wiki/Dune_Messiah> |
+| Tyranids | Hive fleets strip worlds of life for biomass; collective | Official Warhammer Community | <https://www.warhammer-community.com/en-gb/articles/QtNy2Xp2/starting-a-tyranids-army-in-warhammer-40000-everything-you-need-to-know-from-painting-to-lore/> |
+| Reapers | Harvest advanced civilizations in recurring cycles; collective total unknown | *Mass Effect* trilogy; secondary reference. Don't use fan-fiction continuation wikis | <https://masseffect.fandom.com/wiki/Reaper> |
+| Reapers: codex | In-game text describes processing and harvesting | Transcribed game codex; no extrapolated all-history total | <https://masseffect.fandom.com/wiki/Codex/The_Reapers> |
+| Galactus | Consumes worlds, some inhabited, not all; lifetime total unknown | Official Marvel reference | <https://www.marvel.com/teams-and-groups/heralds-of-galactus> |
+| Galactus: inhabited world | Archeopia's population includes survivors after consumption | Official Marvel reference | Link not supplied; the only Marvel link on record is <https://www.marvel.com/characters/ego/in-comics/>. Confirm it before citing Archeopia |
+| Thanos | *Infinity Gauntlet* comics continuity: half of universal life | Official Marvel summary. Don't mix MCU motives with the comics | <https://www.marvel.com/articles/comics/marvel-cosmic-events-explained> |
+| Zeno | Future timeline erased; Zamasu's earlier victims not assigned to Zeno | Official Dragon Ball plot summary | <https://en.dragon-ball-official.com/news/01_900.html> |
+| Anti-Monitor | Infinite multiverse devastated; later restoration changes permanence | DC-hosted retrospective by Alex Jaffe; the column carries an author-opinion notice | <https://www.dc.com/blog/2021/08/16/ask-the-question-how-many-people-died-in-each-crisis> |
+| The Qu | Genetic reshaping of human descendants; a species, not one character | *All Tomorrows* (2006), C. M. Kosemen; secondary reference | <https://en.wikipedia.org/wiki/All_Tomorrows> |
+| Crimson King | Wants to destroy the Tower and multiverse; the goal isn't counted as completed | Stephen King's official site | <https://stephenking.com/DarkTower/flash_index.html> |
+| Pennywise | Preys on Derry's children; no confirmed universal body count | Stephen King's official site | <https://stephenking.com/works/novel/it.html> |
 
 ## Ready-to-use description
 
