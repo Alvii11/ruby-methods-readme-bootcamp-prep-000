@@ -2,6 +2,27 @@
 
 Follow-up Shorts and a long-form essay, built from the [60-second production kit](Fictions_Deadliest_Higgsfield_Kit.md).
 
+## Which channel gets what
+
+**BlavkMist puts the characters first. Among the Billions puts the bigger question first.**
+
+| Channel | Where it is now | What goes there |
+|---------|-----------------|-----------------|
+| **BlavkMist** | Gaming stream clips. 36 subscribers, about 200K lifetime views, 9.6K views in the last week. | Quick character comparisons and rankings: the 60-second "Fiction's deadliest characters" Short, Eren versus Paul, "Could humanity survive the Rumbling?" Label these **"BlavkMist Explores"** so they stand apart from stream clips. |
+| **Among the Billions** | Essay channel with long videos. 70 subscribers. | Long, thoughtful pieces: "The Different Ways Fiction Ends Humanity" and "What Science Fiction Gets Right About Humanity's Extinction." Cosmic horror, civilizations, extinction. |
+
+Those view numbers show the clips reach people. They don't show a big returning audience that only wants stream highlights, so trying commentary on BlavkMist is reasonable. If you want BlavkMist to stay strictly stream highlights, put everything on Among the Billions and change the kit's end card and hashtag to match.
+
+### BlavkMist test: three Shorts
+
+Keep posting stream clips alongside these. Start with topics close to the games already on the channel, then widen:
+
+1. "Could we survive the Rumbling?"
+2. "How deadly is Kratos compared with fiction's biggest killers?" or "Resident Evil's monsters are terrifying. These fictional threats are worse."
+3. "Fiction's deadliest characters": the full comparison from the kit.
+
+Judge the test on watch time, comments and subscribers gained, not just views. One upload won't settle it, but three will tell you something real. Keep Higgsfield spending small until you know you enjoy making these and viewers ask for more.
+
 ## Candidate characters and hooks
 
 | Character or threat | Short's hook | Why it works |
@@ -13,7 +34,9 @@ Follow-up Shorts and a long-form essay, built from the [60-second production kit
 | The Crimson King, Stephen King | "This villain wanted to destroy the structure holding reality together." | Lets you explain the Dark Tower and separate attempted destruction from actual deaths. |
 | Paul Atreides, *Dune* | "The promised savior became the symbol of a war that killed 61 billion." | A clearly stated total, plus a question of responsibility. |
 
-## First five Shorts
+## Shorts to make if the test works
+
+These pick up after the three test Shorts above.
 
 1. **"Fiction's deadliest characters"**: the existing script. A broad introduction to the series.
 2. **"The aliens that turned humanity into something else"**: the Qu. Start with familiar humans, then reveal their altered descendants.
@@ -21,9 +44,9 @@ Follow-up Shorts and a long-form essay, built from the [60-second production kit
 4. **"The AI that left five people alive"**: AM alone. An empty world and five lights can carry most of the video.
 5. **"Powerful doesn't mean the highest death toll"**: Pennywise and the Crimson King versus characters with documented mass casualties. A twist on the original list.
 
-**Recommended order:** finish the original Short, then make AM and the Qu. Those three test whether viewers prefer comparisons, psychological horror or strange alien lore before you spend credits on a full series.
+**After the test:** if the BlavkMist Shorts do well, try AM and the Qu next. They show whether viewers prefer comparisons, psychological horror or strange alien lore before you spend credits on a full series.
 
-## Long-form video: "The Different Ways Fiction Ends Humanity"
+## Long-form video for Among the Billions: "The Different Ways Fiction Ends Humanity"
 
 Aim for 6–8 minutes, with each section answering a different question.
 
