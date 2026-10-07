@@ -13,10 +13,10 @@ from concurrent.futures import ThreadPoolExecutor
 W, H, FPS = 1920, 1080, 24
 RAW = 'https://raw.githubusercontent.com/Alvii11/ruby-methods-readme-bootcamp-prep-000/claude/fiction-deadliest-characters-dwwkbk/fiction-deadliest/'
 CF = 'https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_'
-NARR = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/884901dc-9aca-4d01-bdac-01db9270fbe2.mp3'
+NARR = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/03a59c8e-e5bb-4452-b2ac-abd95be1a06c.mp3'  # v4
 FONTS = '/usr/share/fonts/truetype/higgsfield'
 # Section starts (s) from the narration timing file; section 0 is pulled back to 0.
-STARTS = [0.0, 61.72, 108.63, 162.89, 218.76, 277.38, 326.3, 377.14, 433.42, 483.64, 539.25, 605.65, 659.84]
+STARTS = [0.0, 45.54, 82.44, 121.44, 162.55, 210.46, 259.64, 301.38, 343.62, 384.7, 426.92, 481.23, 527.13]
 
 ASSETS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets.json')))
 CLIPS, IMGS = ASSETS['clips'], ASSETS['imgs']
@@ -52,58 +52,95 @@ PLAN = [
     # 0 Opening
     [c('01', 5.0, **BIG("FICTION'S GREATEST DESTROYERS", 'RANKED')),
      i('102', at='anime', **L('ANIME  ·  BOOKS  ·  GAMES  ·  COMICS')),
-     c('03', 1.8, 1.5, at='Eren'), c('05', 1.8, 1.5, at='AM'), c('04', 1.8, 1.5, at='Paul'),
-     c('10', 1.8, 1.5, at='Galactus'), c('11', 1.8, 1.5, at='Reapers'), c('15', 1.8, 1.5, at='erase'),
+     c('e1', 1.8, 1.5, at='Eren'), c('05', 1.8, 1.5, at='AM'), c('04', 1.8, 1.5, at='Paul'),
+     c('g1', 1.8, 1.5, at='Galactus'), c('11', 1.8, 1.5, at='Reapers'), c('z1', 1.8, 1.5, at='erase'),
      i('101', at='ranking', **L('RANKED BY DEMONSTRATED DESTRUCTIVE SCALE')), i('02', at='count'),
      i('103', at='second', label='MAJOR SPOILERS AHEAD', label_at='Major')],
     # 1 #10 Eren
-    [c('03', 5.0, **T('#10', 'EREN YEAGER', 'Attack on Titan  ·  individual')), i('111', at='ground'),
-     i('112', at='cities'), i('03', at="That's", **L("80% OF HIS WORLD'S HUMANITY")), i('101', at='absurd'),
-     i('113', at='planet', **L('THE PLANET ITSELF REMAINS'))],
+    [c('e1', 5.0, **T('#10', 'EREN YEAGER', 'Attack on Titan  ·  individual')), c('e2', at='ground'),
+     i('111', at='cities'), c('03', at="That's"), i('112', at='There'), i('101', at='absurd'),
+     i('113', at='planet', **L('THE PLANET ITSELF REMAINS')), i('e1', at='first')],
     # 2 #9 AM
     [c('05', 5.0, **T('#9', 'AM', 'I Have No Mouth, and I Must Scream  ·  individual AI')),
-     i('121', at='five', **L('ALL HUMANITY EXCEPT FIVE')), i('06', at='kept', **L('KEPT ALIVE TO BE TORMENTED')),
+     i('121', at='five'), i('06', at='kept', **L('KEPT ALIVE TO BE TORMENTED')),
      i('122', at='sits'), i('123', at='geographic')],
     # 3 #8 Frieza
-    [c('09', 5.0, **T('#8', 'FRIEZA', 'Dragon Ball  ·  individual')), i('131', at='Vegeta', **L('PLANET VEGETA DESTROYED')),
+    [c('09', 5.0, **T('#8', 'FRIEZA', 'Dragon Ball  ·  individual')), c('v1', at='Vegeta'),
      i('132', at='Earth', **L('EARTH DESTROYED  ·  LATER REVERSED')),
      i('133', at='empire', **L('WORLDS SOLD ARE NOT ALL WORLDS DESTROYED')), i('09b', at='killer')],
     # 4 #7 Paul
-    [c('04', 5.0, **T('#7', 'PAUL ATREIDES', 'Dune Messiah  ·  leader')), i('141', at="jihad's", **L('61 BILLION DEAD  ·  INDIRECT')),
+    [c('04', 5.0, **T('#7', 'PAUL ATREIDES', 'Dune Messiah  ·  leader')),
+     i('141', at="jihad's", **L("THE JIHAD'S TOLL, NOT HIS PERSONAL KILLS")),
      i('143', at='leadership'), i('142', at='interstellar', label='PLACEMENT VS FRIEZA: EDITORIAL', label_at='position'),
      i('04b', at='different')],
     # 5 #6 Tyranids
-    [c('13', 5.0, **T('#6', 'THE TYRANIDS', 'Warhammer 40,000  ·  collective')),
-     i('151', at='cities', **L('WORLDS STRIPPED OF LIFE  ·  TOTAL UNKNOWN')), i('152', at='Their', **L('PLACEMENT: EDITORIAL')),
-     i('13', at='unsettling')],
+    [c('t1', 5.0, **T('#6', 'THE TYRANIDS', 'Warhammer 40,000  ·  collective')), c('13', at='collective'),
+     i('151', at='cities', label='NO DEATH COUNTER  ·  TOTAL UNKNOWN', label_at='counter'),
+     i('152', at='Their', **L('PLACEMENT: EDITORIAL')), i('t1', at='unsettling'), i('13', at='next')],
     # 6 #5 Reapers
-    [c('11', 5.0, **T('#5', 'THE REAPERS', 'Mass Effect  ·  collective')), i('161', at='Previous', **L('RECURRING GALACTIC HARVESTS')),
+    [c('11', 5.0, **T('#5', 'THE REAPERS', 'Mass Effect  ·  collective')), i('161', at='Previous', **L('PREVIOUS CYCLES ALREADY HARVESTED')),
      i('162', at='apocalypse'), i('11', at='judgment', **L('TOTAL UNKNOWN  ·  PLACEMENT: EDITORIAL'))],
     # 7 #4 Galactus
-    [c('10', 5.0, **T('#4', 'GALACTUS', 'Marvel Comics  ·  individual')), i('172', at='Not', **L('WORLDS CONSUMED  ·  TOTAL UNKNOWN')),
-     i('171', at='editorial', **L('PLACEMENT: EDITORIAL')), i('173', at='civilization'), i('10', at='survival')],
+    [c('g1', 5.0, **T('#4', 'GALACTUS', 'Marvel Comics  ·  individual')),
+     c('g2', at='Not', **L('NOT EVERY WORLD INHABITED  ·  TOTAL UNKNOWN')), i('172', at='bridge'),
+     i('171', at='editorial', **L('PLACEMENT: EDITORIAL')), c('10', at='Frieza'), i('173', at='civilization'),
+     i('g1', at='survival')],
     # 8 #3 Thanos
-    [c('14', 5.0, **T('#3', 'THANOS', 'Infinity Gauntlet comics  ·  individual')), i('181', at='using', **L('HALF OF ALL LIFE IN THE UNIVERSE')),
+    [c('14', 5.0, **T('#3', 'THANOS', 'Infinity Gauntlet comics  ·  individual')), c('h2', at='wipes'),
+     i('181', at='using', **L('THE COMICS EVENT, NOT THE FILM')),
      i('182', at='Half', **L('A PROPORTION, NOT A CENSUS  ·  LATER REVERSED')), i('14', at='puts')],
     # 9 #2 Zeno
-    [c('15', 5.0, **T('#2', 'ZENO', 'Dragon Ball Super  ·  individual')), i('191', at='Much', **L('A FUTURE TIMELINE ERASED')),
-     i('15b', at='This', **L('RANKED ON REACH, NOT A HIGHER BODY COUNT')), i('192', at='removes')],
+    [c('15', 5.0, **T('#2', 'ZENO', 'Dragon Ball Super  ·  individual')), c('z1', at='erases'),
+     i('191', at='Much', **L('MUCH OF THAT FUTURE WAS ALREADY DEAD')),
+     i('15b', at='This', **L('RANKED ON REACH, NOT A HIGHER BODY COUNT')), i('192', at='removes'), i('z1', at='tiny')],
     # 10 #1 Anti-Monitor
-    [c('16', 5.0, **T('#1', 'ANTI-MONITOR', 'Crisis on Infinite Earths  ·  individual')),
-     i('201', at='retrospective', **L('INFINITE MULTIVERSE DEVASTATED')), i('202', at='complicated'),
-     i('203', at='restore', **L('LATER RESTORED')), i('16b', at='takes')],
+    [c('m1', 5.0, **T('#1', 'ANTI-MONITOR', 'Crisis on Infinite Earths  ·  individual')), c('m2', at='destroys'),
+     i('201', at='retrospective'), c('16', at='strongest'), i('202', at='complicated'),
+     i('203', at='restore', **L('LATER RESTORED')), i('16b', at='takes'), i('m1', at='broadest')],
     # 11 Bonus
     [c('07', 5.0, **T('BONUS', 'THE QU', 'All Tomorrows  ·  species')), i('07'),
      i('08', at='forcing', **L('A SPECIES REMADE  ·  NO RELIABLE DEATH TOTAL')),
      c('17', 5.0, at='Stephen', **T('', 'THE CRIMSON KING', 'The Dark Tower')), i('17', at='Wanting', **L('A GOAL, NOT A COMPLETED KILL')),
      c('18', 5.0, at="Pennywise's", **T('', 'PENNYWISE', 'It')), i('18', at='Its', **L('COSMIC ORIGIN, LOCAL VICTIMS')),
      i('103', at='Power', **L('POWER  ·  CRUELTY  ·  CASUALTIES'))],
-    # 12 Verdict
-    [i('211', **T('', 'THE VERDICT', '')), i('16b', at='Anti-Monitor', **L('DESTRUCTIVE REACH: ANTI-MONITOR')),
-     i('04b', at='Paul', **L('LARGEST STATED TOLL: PAUL ATREIDES  ·  61 BILLION')), i('05', at='deliberate', label='CRUELTY (INDIVIDUAL): AM', label_at='AM'),
-     i('08', at='Qu', **L('CRUELTY (SPECIES): THE QU')), i('103', at='This'), c('11', 2.5, 1.0, at='Reapers'), c('10', 2.5, 1.0, at='Galactus'),
-     c('09', 2.5, 1.0, at="Frieza's"), i('101'), c('20', 5.0, at='miss', **BIG('WHO DID WE MISS?', 'BlavkMist Explores'))],
+    # 12 Verdict (stat cards and the scoreboard come from STATS / RECAP)
+    [i('211', **T('', 'THE VERDICT', '')), i('m1', at='Anti-Monitor'), i('04b', at='Paul'), i('05', at='deliberate'),
+     i('08', at='Qu', label='SPECIES CRUELTY: THE QU', label_at='separate'), i('103', at='This'), c('11', 2.5, 1.0, at='Reapers'), c('g1', 2.5, 1.0, at='Galactus'),
+     c('09', 2.5, 1.0, at="Frieza's"), i('211', at='Choose'), c('20', 5.0, at='miss', **BIG('WHO DID WE MISS?', 'BlavkMist Explores'))],
 ]
+
+# Full-width stat cards: section -> [(anchor word, nth occurrence, kicker, main, sub)].
+# A card never starts before its section's title card has finished.
+STATS = {
+    1: [('eighty', 2, '', '80%', "OF HIS WORLD'S HUMANITY")],
+    2: [('five', 1, '', 'ALL BUT 5', 'HUMANS EXTERMINATED')],
+    3: [('Vegeta', 1, '', 'PLANET VEGETA', 'DESTROYED')],
+    4: [('sixty-one', 1, '', '61 BILLION', 'DEAD IN HIS JIHAD  ·  INDIRECT')],
+    5: [('stripping', 1, '', 'WORLDS', 'STRIPPED OF LIFE  ·  TOTAL UNKNOWN')],
+    6: [('recurring', 1, '', 'CYCLE AFTER CYCLE', 'GALAXY-WIDE HARVESTS')],
+    7: [('consumes', 1, '', 'WORLDS EATEN', 'INCLUDING INHABITED PLANETS')],
+    8: [('half', 1, '', 'HALF', 'OF ALL LIFE IN THE UNIVERSE')],
+    9: [('entire', 1, '', 'AN ENTIRE TIMELINE', 'ERASED')],
+    10: [('infinite', 1, '', 'INFINITE MULTIVERSE', 'REDUCED TO A SINGLE UNIVERSE')],
+    12: [('Anti-Monitor', 1, '#1 IN DESTRUCTIVE SCALE', 'ANTI-MONITOR', ''),
+         ('Paul', 1, 'LARGEST STATED TOLL', 'PAUL ATREIDES', '61 BILLION'),
+         ('AM', 1, 'CRUELTY VERDICT', 'AM', 'DELIBERATE CRUELTY BY AN INDIVIDUAL')],
+}
+STAT_DUR = 3.8
+# Corner badge that keeps the rank and name on screen for the whole countdown entry.
+BADGES = {1: ('#10', 'EREN YEAGER'), 2: ('#9', 'AM'), 3: ('#8', 'FRIEZA'), 4: ('#7', 'PAUL ATREIDES'),
+          5: ('#6', 'THE TYRANIDS'), 6: ('#5', 'THE REAPERS'), 7: ('#4', 'GALACTUS'), 8: ('#3', 'THANOS'),
+          9: ('#2', 'ZENO'), 10: ('#1', 'ANTI-MONITOR')}
+# Verdict scoreboard, shown from the first anchor to the second (section 12).
+RECAP = [('ranking', 'Reapers'), ('Choose', 'miss')]
+RECAP_ROWS = [('#1 IN DESTRUCTIVE SCALE', 'ANTI-MONITOR'), ('LARGEST STATED TOLL', 'PAUL ATREIDES  ·  61 BILLION'),
+              ('CRUELTY VERDICT', 'AM')]
+# Per-section colour identity for the older violet frames (new frames, keys starting with a letter, are left as made).
+GRADE = {7: 'hue=s=0.45,colorbalance=rs=0.25:gs=0.1:bs=-0.25:rm=0.2:gm=0.07:bm=-0.2:rh=0.1:bh=-0.1,eq=contrast=1.1:gamma=1.08',   # Galactus: molten gold
+         8: 'hue=s=0.15,colorbalance=rm=0.1:gm=0.06:bm=-0.08,eq=contrast=1.1',                                                # Thanos: ash and dull gold
+         9: 'hue=s=0.1,colorbalance=bs=0.12:bm=0.08,eq=brightness=0.08:contrast=0.88:gamma=1.15',                             # Zeno: cold, near-white
+         10: 'hue=s=0.3,colorbalance=rs=0.22:gs=-0.08:bs=-0.12:rm=0.2:gm=-0.06:bm=-0.1,eq=contrast=1.1'}                      # Anti-Monitor: crimson
+GRADE_SKIP = {'15', '15b'}   # Zeno's own colours are part of his recognisability
 
 CROP = {'211': 0.80}  # keep this fraction of the height (baked-in letterbox bars)
 
@@ -243,7 +280,8 @@ def render(x):
         fades.append('fade=t=in:st=0:d=0.35')
     if x['last']:
         fades.append(f'fade=t=out:st={max(dur - 0.35, 0):.3f}:d=0.35')
-    tail = (',' + ','.join(fades)) if fades else ''
+    grade = GRADE.get(x['sec']) if not x['k'][0].isalpha() and x['k'] not in GRADE_SKIP else None
+    tail = ''.join(',' + f for f in ([grade] if grade else []) + fades)
     enc = f'-an -c:v libx264 -preset veryfast -crf 17 -pix_fmt yuv420p -r {FPS} -frames:v {nf}'
     if x['t'] == 'clip':
         src = f'src/c{x["k"]}.mp4'
@@ -368,11 +406,16 @@ def captions(words):
 
 def overlays(shots):
     ev = []
+    sec_end = {}
+    for x in shots:
+        sec_end[x['sec']] = x['f1'] / FPS
+    title_until = 0.0
     for x in shots:
         s, e = x['f0'] / FPS, x['f1'] / FPS
         if 'title' in x:
             rank, name, sub = x['title']
-            a, b = s + 0.25, min(s + 5.0, e - 0.1)
+            a, b = s + 0.25, min(s + 5.0, sec_end[x['sec']] - 0.1)
+            title_until = b
             fad = r'{\fad(350,450)}'
             y = 70
             if rank:
@@ -383,17 +426,71 @@ def overlays(shots):
                 ev.append(f'Dialogue: 2,{ass_time(a + 0.3)},{ass_time(b)},Sub,,0,0,0,,{{\\pos(98,{y + 90})}}{fad}{sub}')
         if 'label' in x:
             a = max(s + 0.4, x.get('label_t', s) - 0.1)
-            if 'title' in x:
-                a = max(a, s + 5.2)
+            a = max(a, title_until + 0.2)   # labels share the title's corner
             b = min(a + 6.0, e - 0.2)
             if b - a < 1.2:
-                a = max(s + 0.2, b - 2.5)
-            ev.append(f'Dialogue: 1,{ass_time(a)},{ass_time(b)},Stat,,0,0,0,,{{\\pos(90,80)}}{{\\fad(300,400)}}{x["label"]}')
+                a = max(s + 0.2, title_until + 0.2, b - 2.5)
+            if b - a >= 0.8:
+                ev.append(f'Dialogue: 1,{ass_time(a)},{ass_time(b)},Stat,,0,0,0,,{{\\pos(90,80)}}{{\\fad(300,400)}}{x["label"]}')
         if 'big' in x:
             top, bot = x['big']
             a, b = s + 0.3, e - 0.2
             ev.append(f'Dialogue: 2,{ass_time(a)},{ass_time(b)},Big,,0,0,0,,{{\\pos(960,470)}}{{\\fad(500,500)}}{top}')
             ev.append(f'Dialogue: 2,{ass_time(a + 0.4)},{ass_time(b)},BigSub,,0,0,0,,{{\\pos(960,590)}}{{\\fad(500,500)}}{bot}')
+    return ev
+
+
+def word_time(aw, sec, word, nth=1):
+    hits = [w[2] for w in aw if w[1] == sec and norm(w[0]) == norm(word)]
+    if len(hits) < nth:
+        print(f'WARNING: stat anchor {word!r} #{nth} not found in section {sec}')
+        return None
+    return hits[nth - 1]
+
+
+BAND = r'{\an7\pos(0,%d)\p1\bord0\shad0\1c&H000000&\1a&H%s&\fad(250,350)}m 0 0 l 1920 0 l 1920 %d l 0 %d{\p0}'
+POP = r'{\an5\pos(960,%d)\fad(200,350)\fscx120\fscy120\t(0,260,\fscx100\fscy100)}'
+
+
+def graphics(shots, words):
+    """Stat cards, persistent rank badges and the verdict scoreboard."""
+    aw = aligned(words)
+    sec_start, sec_end = {}, {}
+    for x in shots:
+        sec_start.setdefault(x['sec'], x['f0'] / FPS)
+        sec_end[x['sec']] = x['f1'] / FPS
+    ev = []
+    for sec, (rank, name) in BADGES.items():
+        a, b = sec_start[sec] + 5.3, sec_end[sec] - 0.3
+        ev.append(f'Dialogue: 1,{ass_time(a)},{ass_time(b)},BadgeRank,,0,0,0,,{{\\an9\\pos(1836,46)\\fad(400,300)}}{rank}')
+        ev.append(f'Dialogue: 1,{ass_time(a)},{ass_time(b)},BadgeName,,0,0,0,,{{\\an9\\pos(1836,152)\\fad(400,300)}}{name}')
+    for sec, cards in STATS.items():
+        times = []
+        for word, nth, kick, main, sub in cards:
+            t = word_time(aw, sec, word, nth)
+            if t is not None:
+                times.append((max(t - 0.1, sec_start[sec] + (5.3 if sec != 12 else 0.4)), kick, main, sub))
+        for n, (a, kick, main, sub) in enumerate(times):
+            b = min(a + STAT_DUR, sec_end[sec] - 0.2)
+            if n + 1 < len(times):
+                b = min(b, times[n + 1][0] - 0.15)
+            ev.append(f'Dialogue: 3,{ass_time(a)},{ass_time(b)},Band,,0,0,0,,' + BAND % (330, '60', 360, 360))
+            if kick:
+                ev.append(f'Dialogue: 4,{ass_time(a)},{ass_time(b)},StatKick,,0,0,0,,' + POP % 405 + kick)
+            ev.append(f'Dialogue: 4,{ass_time(a)},{ass_time(b)},StatMain,,0,0,0,,' + POP % (500 if kick else 470) + main)
+            if sub:
+                ev.append(f'Dialogue: 4,{ass_time(a + 0.2)},{ass_time(b)},StatSub,,0,0,0,,' + POP % (610 if kick else 600) + sub)
+    for first, last in RECAP:
+        a, b = word_time(aw, 12, first), word_time(aw, 12, last)
+        if a is None or b is None:
+            continue
+        a, b = a - 0.1, b - 0.15
+        ev.append(f'Dialogue: 3,{ass_time(a)},{ass_time(b)},Band,,0,0,0,,' + BAND % (250, '48', 560, 560))
+        for n, (kick, val) in enumerate(RECAP_ROWS):
+            y = 330 + n * 170
+            d = 0.25 * n
+            ev.append(f'Dialogue: 4,{ass_time(a + d)},{ass_time(b)},RecapKick,,0,0,0,,{{\\an5\\pos(960,{y})\\fad(250,350)}}{kick}')
+            ev.append(f'Dialogue: 4,{ass_time(a + d)},{ass_time(b)},RecapVal,,0,0,0,,{{\\an5\\pos(960,{y + 62})\\fad(250,350)}}{val}')
     return ev
 
 
@@ -412,6 +509,14 @@ Style: Name,Montserrat ExtraBold,76,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,
 Style: Sub,Metropolis ExtraBold,36,&H00D8D8D8,&H00D8D8D8,&H00000000,&H64000000,0,0,0,0,100,100,1,0,1,2.5,1,7,0,0,0,1
 Style: Stat,Montserrat ExtraBold,42,&H00FFFFFF,&H00FFFFFF,&H9A0A0A0A,&H00000000,0,0,0,0,100,100,1,0,3,14,0,7,0,0,0,1
 Style: Big,Montserrat ExtraBold,96,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,3,0,1,4,3,5,0,0,0,1
+Style: BadgeRank,Montserrat ExtraBold,92,&H003C14DC,&H003C14DC,&H00000000,&H64000000,0,0,0,0,100,100,1,0,1,3,2,9,0,0,0,1
+Style: BadgeName,Montserrat ExtraBold,48,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,2,0,1,3,1,9,0,0,0,1
+Style: Band,Montserrat ExtraBold,20,&H00000000,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+Style: StatKick,Montserrat ExtraBold,46,&H003C14DC,&H003C14DC,&H00000000,&H64000000,0,0,0,0,100,100,4,0,1,2.5,1,5,0,0,0,1
+Style: StatMain,Montserrat ExtraBold,150,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,3,0,1,5,3,5,0,0,0,1
+Style: StatSub,Montserrat ExtraBold,50,&H00E6E6E6,&H00E6E6E6,&H00000000,&H64000000,0,0,0,0,100,100,4,0,1,3,1,5,0,0,0,1
+Style: RecapKick,Montserrat ExtraBold,40,&H003C14DC,&H003C14DC,&H00000000,&H64000000,0,0,0,0,100,100,4,0,1,2.5,1,5,0,0,0,1
+Style: RecapVal,Montserrat ExtraBold,72,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,2,0,1,3.5,2,5,0,0,0,1
 Style: BigSub,Montserrat ExtraBold,56,&H003C14DC,&H003C14DC,&H00000000,&H64000000,0,0,0,0,100,100,6,0,1,3,2,5,0,0,0,1
 
 [Events]
@@ -423,7 +528,7 @@ def do_final():
     shots, total = timeline()
     words = json.load(open('words.json'))
     with open('gd.ass', 'w') as f:
-        f.write(HEADER + '\n'.join(overlays(shots) + captions(words)) + '\n')
+        f.write(HEADER + '\n'.join(overlays(shots) + graphics(shots, words) + captions(words)) + '\n')
     sh(f'ffmpeg -v error -y -i base.mp4 -i narr.mp3 -vf "ass=gd.ass:fontsdir={FONTS}" '
        f'-c:v libx264 -preset veryfast -crf 19 -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart -shortest final.mp4')
     print('final.mp4 done')
