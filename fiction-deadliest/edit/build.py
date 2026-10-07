@@ -2,6 +2,7 @@
 """Rough-cut builder for "Fiction's Greatest Destroyers, Ranked".
 
 Runs in the Higgsfield sandbox (ffmpeg + libass + faster-whisper).
+  python3 build.py narr    -> narr.mp3 + timing.json (pause-trimmed narration from section takes)
   python3 build.py shots   -> base.mp4   (all shots, 1920x1080, 24 fps, no audio)
   python3 build.py words   -> words.json (word timestamps of the narration)
   python3 build.py final   -> final.mp4  (base + burned titles/labels/captions + narration)
@@ -89,6 +90,8 @@ PLAN = [
      c('20', 5.0, **BIG('WHO DID WE MISS?', 'BlavkMist Explores'))],
 ]
 
+CROP = {'211': 0.80}  # keep this fraction of the height (baked-in letterbox bars)
+
 ZOOMS = [('in', 0, 0), ('out', 0, 0), ('in', 0.6, 0), ('in', -0.6, 0), ('out', 0.5, 0.3), ('in', 0, -0.5)]
 
 
@@ -111,9 +114,13 @@ def narration_len():
 
 def timeline():
     total = narration_len()
-    ends = STARTS[1:] + [total]
+    starts = STARTS
+    if os.path.exists('timing.json'):
+        starts = json.load(open('timing.json'))['starts']
+        starts = [0.0] + starts[1:]
+    ends = starts[1:] + [total]
     shots = []
-    for sec, (s, e) in enumerate(zip(STARTS, ends)):
+    for sec, (s, e) in enumerate(zip(starts, ends)):
         plan = PLAN[sec]
         fixed = sum(x['dur'] for x in plan if x['dur'])
         nimg = sum(1 for x in plan if x['dur'] is None)
@@ -154,7 +161,8 @@ def render(x):
         z = f'1+0.10*on/{nf}' if mode == 'in' else f'1.10-0.10*on/{nf}'
         xs = f'(iw-iw/zoom)*(0.5+{px}*(on/{nf}-0.5))'
         ys = f'(ih-ih/zoom)*(0.5+{py}*(on/{nf}-0.5))'
-        vf = (f'scale=3840:2160:force_original_aspect_ratio=increase,crop=3840:2160,'
+        pre = f'crop=iw:ih*{CROP[x["k"]]},' if x['k'] in CROP else ''
+        vf = (f'{pre}scale=3840:2160:force_original_aspect_ratio=increase,crop=3840:2160,'
               f"zoompan=z='{z}':x='{xs}':y='{ys}':d={nf}:s={W}x{H}:fps={FPS},setsar=1{tail}")
         sh(f'ffmpeg -v error -y -i {src} -vf "{vf}" {enc} {out}')
     return out
@@ -304,5 +312,75 @@ def do_final():
     print('final.mp4 done')
 
 
+# Pause targets for the narration edit (silence only; the voice is never stretched).
+GAP_MAX, GAP_TO = 0.45, 0.40          # ordinary sentence gaps
+REVEAL = (0.8, 1.0)                   # first pause after "At number ..." in sections 1-10
+TWIST = 1.2                           # first pause in the bonus ("Now the twist.")
+BREAK = {11: 1.5, 12: 1.2}            # silence before these sections; others use BREAK_DEFAULT
+BREAK_DEFAULT, HEAD, TAIL = 1.0, 0.4, 1.5
+
+
+def do_narr():
+    import numpy as np
+    SR, FR = 48000, 480
+    urls = ASSETS['narr']
+
+    def load(p):
+        b = subprocess.run(['ffmpeg', '-v', 'error', '-i', p, '-f', 'f32le', '-ac', '2', '-ar', str(SR), '-'],
+                           capture_output=True, check=True).stdout
+        return np.frombuffer(b, dtype=np.float32).reshape(-1, 2)
+
+    def runs(x, thr=-42):
+        m = x.mean(1); n = len(m) // FR
+        db = 20 * np.log10(np.sqrt((m[:n * FR].reshape(n, FR) ** 2).mean(1) + 1e-12))
+        sil = db < thr; out = []; k = 0
+        while k < n:
+            if sil[k]:
+                j = k
+                while j < n and sil[j]:
+                    j += 1
+                out.append((k * FR, j * FR)); k = j
+            else:
+                k += 1
+        return out, n * FR
+
+    os.makedirs('narr', exist_ok=True)
+    secs = []
+    for k in range(len(urls)):
+        x = load(fetch(urls[k], f'narr/s{k:02d}.wav'))
+        rs, end = runs(x)
+        a = rs[0][1] if rs and rs[0][0] == 0 else 0
+        b = rs[-1][0] if rs and rs[-1][1] >= end - FR else len(x)
+        inner = [(p, q) for p, q in rs if p > a and q < b and (q - p) / SR >= 0.25]
+        pieces, cur = [], a
+        for gi, (p, q) in enumerate(inner):
+            d = (q - p) / SR
+            if gi == 0 and 1 <= k <= 10:
+                t = min(max(d, REVEAL[0]), REVEAL[1])
+            elif gi == 0 and k == 11:
+                t = TWIST
+            elif d > GAP_MAX:
+                t = GAP_TO
+            else:
+                t = d
+            h = int(t * SR / 2)
+            pieces.append(x[cur:p + h]); cur = q - (int(t * SR) - h)
+        pieces.append(x[cur:b])
+        secs.append(np.concatenate(pieces))
+    sil = lambda t: np.zeros((int(t * SR), 2), dtype=np.float32)
+    out, t, starts = [sil(HEAD)], HEAD, []
+    for k, y in enumerate(secs):
+        if k:
+            g = BREAK.get(k, BREAK_DEFAULT); out.append(sil(g)); t += g
+        starts.append(round(t, 2)); out.append(y); t += len(y) / SR
+    out.append(sil(TAIL))
+    np.concatenate(out).astype('<f4').tofile('narr.f32')
+    sh(f'ffmpeg -v error -y -f f32le -ar {SR} -ac 2 -i narr.f32 -af loudnorm=I=-16:TP=-1.5:LRA=11 -ar {SR} -c:a libmp3lame -b:a 320k narr.mp3')
+    total = t + TAIL
+    json.dump({'starts': starts, 'total': round(total, 2), 'words': 1445, 'overall_wpm': round(1445 / total * 60)},
+              open('timing.json', 'w'))
+    print('narr', round(total, 1), 's', starts)
+
+
 if __name__ == '__main__':
-    {'shots': do_shots, 'words': do_words, 'final': do_final}[sys.argv[1]]()
+    {'narr': do_narr, 'shots': do_shots, 'words': do_words, 'final': do_final}[sys.argv[1]]()
