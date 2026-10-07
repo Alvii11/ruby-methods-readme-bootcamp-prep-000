@@ -105,7 +105,7 @@ PLAN = [
      i('103', at='Power', **L('POWER  ·  CRUELTY  ·  CASUALTIES'))],
     # 12 Verdict (stat cards and the scoreboard come from STATS / RECAP)
     [i('211', **T('', 'THE VERDICT', '')), i('m1', at='Anti-Monitor'), i('04b', at='Paul'), i('05', at='deliberate'),
-     i('08', at='Qu', label='SPECIES CRUELTY: THE QU', label_at='separate'), i('103', at='This'), c('11', 2.5, 1.0, at='Reapers'), c('g1', 2.5, 1.0, at='Galactus'),
+     i('08', at='fate', **L('SPECIES CRUELTY: THE QU')), i('103', at='This'), c('11', 2.5, 1.0, at='Reapers'), c('g1', 2.5, 1.0, at='Galactus'),
      c('09', 2.5, 1.0, at="Frieza's"), i('211', at='Choose'), c('20', 5.0, at='miss', **BIG('WHO DID WE MISS?', 'BlavkMist Explores'))],
 ]
 
@@ -480,7 +480,7 @@ def card_plan(shots, words):
         out = []
         for n, (a, kick, main, sub) in enumerate(times):
             b = min(a + STAT_DUR, sec_end[sec] - 0.2)
-            nxt = [q for q in cuts[sec] if q > a + 2.4]
+            nxt = [q for q in cuts[sec] if q > a + (2.4 if sec in BADGES else 1.5)]
             if nxt:
                 b = min(b, nxt[0] - 0.1)
             if n + 1 < len(times):

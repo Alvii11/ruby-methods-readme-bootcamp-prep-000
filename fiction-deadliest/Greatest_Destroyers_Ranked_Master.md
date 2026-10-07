@@ -438,7 +438,7 @@ Same narration v2 takes; pauses tightened in the edit only: sentence gaps capped
 - **Narration v3:** [MP3](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/e94a7924-6801-4088-b66e-870e38a529f1.mp3)
 - **Pace:** 148 words per minute overall (v2 140, v1 122); 168 while speaking.
 
-### Rough cut v4: fixed #10 intro, visuals synced to the words (current)
+### Rough cut v4: fixed #10 intro, visuals synced to the words
 
 - **#10 narration fix:** the TTS had said "At number ten" twice. Section 1 is now two clean half-takes joined with a 0.35 s gap. Whisper on the render confirms one "At number 10". The other 12 sections are unchanged.
 - **Shot sync:** each shot and label now starts on the word it illustrates, so it no longer gets an equal share of its section. For example, the Qu title lands on "The Qu", the Crimson King title on "Stephen King's", and Pennywise on "Pennywise's". Frames were checked at each of these points.
@@ -446,6 +446,39 @@ Same narration v2 takes; pauses tightened in the edit only: sentence gaps capped
 - **Rough cut v4:** [MP4, 9:37, 1920×1080](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/e73f9e7a-5eec-452b-8245-064232b179e3.mp4)
 - **Narration v4:** [MP3](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/03a59c8e-e5bb-4452-b2ac-abd95be1a06c.mp3)
 - **Section starts (s):** 0.3, 45.54, 82.44, 121.44, 162.55, 210.46, 259.64, 301.38, 343.62, 384.7, 426.92, 481.23, 527.13. Total 577.4 s, 150 wpm overall.
+
+### Rough cut v5: character identity and ranking graphics (current)
+
+Changes made after your visual review of v4. Narration is the v4 track, unchanged.
+
+- **Character reveals:** each of these sections now opens on the character or a recognizable image of the act:
+  - Eren in person, then the Founding Titan with the Wall Titans.
+  - A Tyranid Hive Tyrant.
+  - Galactus himself, draining a world.
+  - The Anti-Monitor in close-up.
+  - For Thanos, the filter still blocks the character, so his section has the gauntlet reveal and then people turning to dust on "wipes out half".
+- **Biggest destruction moments, animated:** Planet Vegeta explodes on "Vegeta". The Founding Titan leads the march. Galactus's world is stripped into gold. Half a crowd turns to dust. The future is erased to white. A wall of antimatter sweeps through parallel Earths.
+- **Rank badge:** after each title card, a "#4 GALACTUS"-style badge stays in the top-right corner until the next entry. Title cards now stay up the full 5 seconds, even when the next shot cuts in early.
+- **Stat cards:** a full-width card appears on the spoken figure in each entry. For example: 80%, ALL BUT 5, PLANET VEGETA, 61 BILLION, HALF OF ALL LIFE, AN ENTIRE TIMELINE ERASED, INFINITE MULTIVERSE. Small labels now carry only the caveats.
+- **Card timing:** each card lands on its spoken word. If that comes during the title, the title gives way to the corner badge early. A card ends at the next cut, so a card about one thing never sits over a shot of another, as "PLANET VEGETA" over the Earth shot did in the first v5 render.
+- **Cosmic sections have their own colour:** Galactus is molten gold, Thanos ash and dull gold, Zeno cold near-white (his own frames keep their colours), and Anti-Monitor crimson. The new frames were made in those palettes; the older violet frames are tinted to match.
+- **Ending:** separate cards for "#1 IN DESTRUCTIVE SCALE: ANTI-MONITOR", "LARGEST STATED TOLL: PAUL ATREIDES, 61 BILLION" and "CRUELTY VERDICT: AM". A three-line scoreboard then appears twice: on "This ranking gives us a winner" and on "Choose the rule…", right before "Who did we miss?".
+- **Rough cut v5:** [MP4, 9:37, 1920×1080](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/e70c2b59-84ae-42d2-8304-8e511b5512e8.mp4)
+
+New frames (Nano Banana Pro, 2K, 16:9) and clips (Kling 3.0 Pro, 5 s, silent). File IDs are in [edit/assets.json](edit/assets.json) under keys e1, e2, t1, g1, g2, h2, z1, m1, m2 and clip v1:
+
+| Key | Shot | Frame | Clip |
+|-----|------|-------|------|
+| e1 | #10 Eren on the shore, Titans behind | Use | Use; first attempt filter-blocked, refunded |
+| e2 | #10 Founding Titan leading the Rumbling | Use | Use |
+| t1 | #6 Hive Tyrant and swarm | Use | Use |
+| g1 | #4 Galactus draining a world | Use; first direct Galactus frame to pass the filter | Use |
+| g2 | #4 Planet stripped into rivers of gold | Use | Use |
+| h2 | #3 Half a crowd turns to dust (Thanos himself was blocked again; refunded) | Use | Use |
+| z1 | #2 A ruined future erased to white | Use | Use |
+| m1 | #1 Anti-Monitor close-up, crimson | Use | Use |
+| m2 | #1 Antimatter wave through parallel Earths | Use | Use |
+| v1 | #8 Planet Vegeta explodes (from coverage frame 131) | — | Use |
 
 ### Credit log
 
@@ -464,6 +497,8 @@ Working ceiling for the first complete cut: 250 credits, including about 50 in r
 | 9 | 30 coverage frames | Nano Banana Pro, 2K, 16:9 | 60.00 | 325.75 | All usable |
 | 10 | Narration v2, 13 sections | Seed Audio 1.0, Desmond, speech_rate 0, 48 kHz | 61.60 | 387.35 | Faster delivery after your feedback; used in rough cut v2 |
 | 11 | Section 1 re-takes (#10 repeat fix) | Seed Audio 1.0, Desmond, speech_rate 0, 48 kHz; 1 full + 4 half takes | 12.90 | 400.25 | Full re-take garbled; two clean half-takes used in rough cut v4 |
+| 12 | 9 character and destruction frames | Nano Banana Pro, 2K, 16:9 | 18.00 | 418.25 | All 9 used in rough cut v5; blocked Thanos frame refunded |
+| 13 | 10 reveal and destruction animations | Kling 3.0 Pro, 5 s, silent | 87.50 | 505.75 | All 10 used in rough cut v5; one filter block refunded and retried |
 
 **Remaining budget:** 127.50 credits under the 250 ceiling. Earlier estimates, now spent: full narration at the same model about 52 credits. The remaining 19 beats at the style-frame setting about 52 credits. That leaves roughly 130 credits under the ceiling for coverage frames and the five hero animations. Quote each animation before generating.
 
