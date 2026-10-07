@@ -335,6 +335,40 @@ Passed. Higgsfield's `sandbox_exec` sandbox runs ffmpeg 5.1, ImageMagick, Pillow
 
 All three assets are also saved in your Higgsfield generations.
 
+### Full narration v1 (run 5)
+
+- **Recording:** 13 sections, Desmond preset, Seed Audio 1.0, `speech_rate` −10, 48 kHz. Same voice as the test throughout.
+- **Pause edit (silence only; the voice wasn't stretched):** sentence gaps over 0.7 s cut to 0.6 s, shorter gaps kept as delivered. The first pause after each "At number…" reveal set to 1.0–1.5 s. 1.3 s between sections, 2.0 s before "Now the twist", 1.6 s before the final verdict. Loudness normalized to −16 LUFS.
+- **Result:** 11 min 53 s. Natural speaking pace 153 words per minute (128–177 by section); 122 overall including pauses. The pace wasn't forced to 150.
+- **Files:** [narration MP3, 320 kbps](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/884901dc-9aca-4d01-bdac-01db9270fbe2.mp3) and [section timing JSON](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/663dc7f0-64e0-4d70-8220-278cfe7b8b42.json), with section start times for the edit. Both are saved in Higgsfield media.
+- **Transcript check:** matches the script nearly word for word. The differences are transcription spellings (Jaeger, Freeza, "cue" for Qu). Possible real slip: #6 transcribed as "Number six" without "At", at about 4:37. Listen there. "Dune Messiah" came through correctly.
+- **Section starts (s):** 0.5 opening · 61.7 #10 · 108.6 #9 · 162.9 #8 · 218.8 #7 · 277.4 #6 · 326.3 #5 · 377.1 #4 · 433.4 #3 · 483.6 #2 · 539.3 #1 · 605.7 bonus · 659.8 verdict.
+
+### Storyboard frames (run 6)
+
+GPT Image 2.5, high, 2K, 16:9. Beat 12 (Reaper cycle) and beat 19 (verdict cards) are editor graphics and weren't generated. Reviewed on contact sheets.
+
+| Beat | Shot | File | Review |
+|------|------|------|--------|
+| 01 | Opening: dead planet, empty city, fading stars | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261006_155643_1f71030f-962c-4af1-8887-f80cb4ceb687.png) | Usable |
+| 02 | Rules: archive desk, three blank panels | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_062925_b183bfcf-3c4b-425b-9b51-07d8af0cbd40.png) | Usable; panels are blank for editor text |
+| 03 | #10 Eren: Rumbling | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261006_130655_9e2316ea-9ab0-441e-9214-c348b852ca3e.png) | Approved by you |
+| 04 | #7 Paul | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_062924_2a4b033c-252b-4c85-822e-f72cd24eeb27.png) | **Redo.** Face reads as a likeness of the film actor, against the "no actor imitation" lock |
+| 05 | #9 AM: supercomputer, red eye | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261006_155644_cf449baa-d2ac-41cb-afd0-9d3876de9a1e.png) | Usable |
+| 06 | #9 AM survivor: corridor | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_062924_54b82852-23cd-45be-bddc-30a978a52511.png) | Usable |
+| 07 | Bonus Qu: branching patterns | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261006_155643_7bd7bad1-4aec-41f9-abcc-a9aac822d5cb.png) | Usable |
+| 08 | Bonus Qu descendants: silhouettes | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_062923_3a139dcd-adb8-434c-949d-e8dd119eecdd.png) | Usable |
+| 09 | #8 Frieza: first form, energy sphere, red planet | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261006_155642_1095cf41-85a8-45ba-b723-a6228112dc01.png) | Usable but stylistically off: flat cartoon render, not the illustrated-realism look. Optional redo |
+| 10 | #4 Galactus (symbolic): planet drained toward a vast dark shape | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_063109_ade8a6e8-bf20-4a8d-89f0-92c8f5c5ffc4.png) | Usable with caption. The filter blocked both direct Galactus prompts |
+| 11 | #5 Reapers: warship over city | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261006_155643_e0457a0a-c9dc-4aff-a760-2a23ca87acb7.png) | Usable |
+| 13 | #6 Tyranids: hive fleet over green world | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261006_155643_b5c7973f-1c92-4083-8ccb-e1de380cc395.png) | Usable |
+| 14 | #3 Thanos (symbolic): gauntlet, half the lights fading | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_063109_17979bcc-9998-4ff8-af07-cd9d39d382b0.png) | Usable. The filter blocked both direct Thanos prompts |
+| 15 | #2 Zeno | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_063023_e922da2b-837c-448d-ad1e-2cf24a9ec157.png) | **Weak.** Scale and composition work, but the character design isn't faithful (robot-like patterned robe) |
+| 16 | #1 Anti-Monitor | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_062947_912ae78c-55ca-426b-a4eb-044e08411474.png) | **Wrong character. Redo.** The helmet is Galactus's crested design, not Anti-Monitor's |
+| 17 | Bonus Crimson King: tower in roses | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_063023_777ff020-ceb7-4794-b522-42b7f8382d44.png) | Usable |
+| 18 | Bonus Pennywise: storm drain, red balloon | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_062947_5b7537a3-7a63-4b64-8ab3-4d8135c56f45.png) | Usable; the clown isn't visible, which is safe and works |
+| 20 | Close: empty chair under stars | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_062925_48af5924-6fc6-4187-89d4-49c8932e6234.png) | Usable |
+
 ### Credit log
 
 Working ceiling for the first complete cut: 250 credits, including about 50 in reserve.
@@ -344,9 +378,11 @@ Working ceiling for the first complete cut: 250 credits, including about 50 in r
 | 1 | Rumbling still | GPT Image 2.5, medium, 1K, 9:16 | 0.5 | 0.5 | Kept for Shorts |
 | 2 | Narration sample: opening + #10 | Seed Audio 1.0, Desmond preset | 8.7 | 9.2 | Too fast (about 165 wpm); replaced by a slower recording, not stretched |
 | 3 | Style frame: Eren / Rumbling | GPT Image 2.5, high, 2K, 16:9 | 2.75 | 11.95 | **Approved** for the landscape master |
-| 4 | Pronunciation and pace test | Seed Audio 1.0, Desmond, speech_rate −10, 48 kHz | 2.2 | 14.15 | Names OK in transcription; timbre awaiting your ear; pauses too long |
+| 4 | Pronunciation and pace test | Seed Audio 1.0, Desmond, speech_rate −10, 48 kHz | 2.2 | 14.15 | Led to the section-by-section plus pause-trim approach |
+| 5 | Full narration, 13 sections | Seed Audio 1.0, Desmond, speech_rate −10, 48 kHz | 61.60 | 75.75 | Done; pauses trimmed; listen at 4:37 |
+| 6 | 17 storyboard frames | GPT Image 2.5, high, 2K, 16:9 | 46.75 | 122.50 | 13 usable, 1 optional redo (09), 3 redos (04, 15, 16). 4 filter-blocked attempts weren't charged |
 
-**Estimates for the full set, from these quotes:** full narration at the same model about 52 credits. The remaining 19 beats at the style-frame setting about 52 credits. That leaves roughly 130 credits under the ceiling for coverage frames and the five hero animations. Quote each animation before generating.
+**Remaining budget:** 127.50 credits under the 250 ceiling. Earlier estimates, now spent: full narration at the same model about 52 credits. The remaining 19 beats at the style-frame setting about 52 credits. That leaves roughly 130 credits under the ceiling for coverage frames and the five hero animations. Quote each animation before generating.
 
 ## Fact-check and publication notes
 
