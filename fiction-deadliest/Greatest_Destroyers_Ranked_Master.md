@@ -406,6 +406,14 @@ Every countdown entry plus the opening, the bonus and the close gets one motion 
 | 18 | Bonus Pennywise: balloon over the drain | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064929_1f113d09-5a47-4f6c-898d-84c2e42ce871.mp4) · passed review |
 | 20 | Close: pull-back from the empty chair | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064949_c4348016-7d6d-46e5-9dab-012c36dc8182.mp4) · passed review |
 
+### Coverage frames (run 9): Nano Banana Pro, 2K, 16:9, 2 credits each
+
+30 extra shots (settings, aftermath and details) so no section holds one image too long. All passed contact-sheet review; 142 (war-room hologram) reads a little like an Earth map, so it's used briefly. Files are listed in [edit/assets.json](edit/assets.json) (keys 101–211), with prompts summarized by beat in [coverage_jobs.json](coverage_jobs.json).
+
+### Rough cut v1 (no credits)
+
+Built by [edit/build.py](edit/build.py) in the Higgsfield sandbox: every clip and still timed to the narration sections, slow zoom/pan on stills, fades between sections, burned-in rank titles ("#10 EREN YEAGER"), stat labels ("80% OF HIS WORLD'S HUMANITY", "PLACEMENT: EDITORIAL"), and captions aligned to the script text. No music; add licensed music in your editor.
+
 ### Credit log
 
 Working ceiling for the first complete cut: 250 credits, including about 50 in reserve.
@@ -420,6 +428,7 @@ Working ceiling for the first complete cut: 250 credits, including about 50 in r
 | 6 | 17 storyboard frames | GPT Image 2.5, high, 2K, 16:9 | 46.75 | 122.50 | 13 usable, 1 optional redo (09), 3 redos (04, 15, 16). 4 filter-blocked attempts weren't charged |
 | 7 | 6 redo frames | Nano Banana Pro, 2K, 16:9 | 12.00 | 134.50 | 4 kept (Paul, Frieza, Zeno, Anti-Monitor); Galactus and Thanos blocked, not charged |
 | 8 | 15 hero animations | Kling 3.0 Pro, 5 s, silent | 131.25 | 265.75 | All 15 passed review. The working ceiling was raised after you asked to spend for quality |
+| 9 | 30 coverage frames | Nano Banana Pro, 2K, 16:9 | 60.00 | 325.75 | All usable |
 
 **Remaining budget:** 127.50 credits under the 250 ceiling. Earlier estimates, now spent: full narration at the same model about 52 credits. The remaining 19 beats at the style-frame setting about 52 credits. That leaves roughly 130 credits under the ceiling for coverage frames and the five hero animations. Quote each animation before generating.
 
