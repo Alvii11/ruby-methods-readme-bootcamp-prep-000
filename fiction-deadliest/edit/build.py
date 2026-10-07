@@ -313,11 +313,11 @@ def do_final():
 
 
 # Pause targets for the narration edit (silence only; the voice is never stretched).
-GAP_MAX, GAP_TO = 0.45, 0.40          # ordinary sentence gaps
-REVEAL = (0.8, 1.0)                   # first pause after "At number ..." in sections 1-10
-TWIST = 1.2                           # first pause in the bonus ("Now the twist.")
-BREAK = {11: 1.5, 12: 1.2}            # silence before these sections; others use BREAK_DEFAULT
-BREAK_DEFAULT, HEAD, TAIL = 1.0, 0.4, 1.5
+GAP_MAX, GAP_TO = 0.30, 0.25          # ordinary sentence gaps
+REVEAL = (0.6, 0.7)                   # first pause after "At number ..." in sections 1-10
+TWIST = 0.9                           # first pause in the bonus ("Now the twist.")
+BREAK = {11: 1.0, 12: 0.9}            # silence before these sections; others use BREAK_DEFAULT
+BREAK_DEFAULT, HEAD, TAIL = 0.7, 0.3, 1.2
 
 
 def do_narr():
