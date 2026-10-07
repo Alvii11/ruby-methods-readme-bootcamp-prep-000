@@ -464,7 +464,11 @@ def do_narr():
     os.makedirs('narr', exist_ok=True)
     secs = []
     for k in range(len(urls)):
-        x = load(fetch(urls[k], f'narr/s{k:02d}.wav'))
+        if isinstance(urls[k], list):   # section recorded in parts: join with a short breath
+            parts = [load(fetch(u, f'narr/s{k:02d}_{q}.wav')) for q, u in enumerate(urls[k])]
+            x = np.concatenate(sum([[pt, np.zeros((int(0.35 * SR), 2), dtype=np.float32)] for pt in parts], [])[:-1])
+        else:
+            x = load(fetch(urls[k], f'narr/s{k:02d}.wav'))
         rs, end = runs(x)
         a = rs[0][1] if rs and rs[0][0] == 0 else 0
         b = rs[-1][0] if rs and rs[-1][1] >= end - FR else len(x)
