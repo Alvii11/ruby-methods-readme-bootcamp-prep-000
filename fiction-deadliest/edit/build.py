@@ -485,11 +485,10 @@ def card_plan(shots, words):
             if t is None:
                 continue
             a = max(t - 0.1, sec_start[sec] + 0.4)
-            if sec in BADGES:
-                if a < sec_start[sec] + 2.2:
-                    a = sec_start[sec] + 5.3
-                elif a < sec_start[sec] + 5.3:
-                    title_end[sec] = min(title_end[sec], a - 0.15)
+            if sec in BADGES and a < sec_start[sec] + 2.2:
+                a = sec_start[sec] + 5.3
+            elif a < sec_start[sec] + 5.3:   # titles and cards share the lower-left corner
+                title_end[sec] = min(title_end[sec], a - 0.15)
             times.append((a, kick, main, sub))
         out = []
         for n, (a, kick, main, sub) in enumerate(times):
