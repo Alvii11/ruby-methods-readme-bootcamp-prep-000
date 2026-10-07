@@ -369,6 +369,21 @@ GPT Image 2.5, high, 2K, 16:9. Beat 12 (Reaper cycle) and beat 19 (verdict cards
 | 18 | Bonus Pennywise: storm drain, red balloon | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_062947_5b7537a3-7a63-4b64-8ab3-4d8135c56f45.png) | Usable; the clown isn't visible, which is safe and works |
 | 20 | Close: empty chair under stars | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_062925_48af5924-6fc6-4187-89d4-49c8932e6234.png) | Usable |
 
+### Frame redo pass (run 7): Nano Banana Pro, 2K, 16:9, 2 credits each
+
+Following your go-ahead to spend where it makes the video less "AI slop", the weak frames were redone on Nano Banana Pro, which handles known characters and painterly styles better.
+
+| Beat | Shot | File | Review |
+|------|------|------|--------|
+| 04 | #7 Paul: hooded, from behind, no face | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_063939_e00a26fe-c1ce-48a4-9f92-aa29ac0a580e.png) | **Use.** Replaces the actor-likeness frame |
+| 09 | #8 Frieza: first form, full-bleed, painterly | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_063939_14f14a23-04b1-418d-bc46-d1a6f5da63e4.png) | **Use.** Replaces the flat cartoon frame |
+| 15 | #2 Zeno: faithful design, tiny in empty space | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_063714_71b152f4-8a4c-4680-87bc-4c8bb32acd6f.png) | **Use.** Replaces the off-model frame |
+| 16 | #1 Anti-Monitor: ribbed dome helmet, antimatter wave over universes | [PNG](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_063938_ff83b10b-1377-46c4-859f-edabd5eecd75.png) | **Use.** Replaces the wrong-character frame |
+| 10 | #4 Galactus, direct attempt | job 30c6e906-2d66-4701-aa7f-7b897ae14ddc | Pending at time of writing |
+| 14 | #3 Thanos, direct attempts | — | Blocked by the content filter on both models and every wording. The symbolic gauntlet frame stays |
+
+Rejected along the way: the first Paul redo (hood down, profile still close to the actor) and the first Frieza redo (composed as a vertical panel with side bars).
+
 ### Credit log
 
 Working ceiling for the first complete cut: 250 credits, including about 50 in reserve.
