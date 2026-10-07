@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Objective audio and caption checks on final.mp4 (run in the build folder after `build.py final`).
 
-  python3 qa.py   -> loudness, peaks, longest pauses, caption sync/coverage against a fresh transcript
+  python3 qa.py [media]   -> loudness, peaks, longest pauses, caption sync/coverage against a fresh transcript
+  (media defaults to final.mp4; an audio-only extract works too. Reuses qa_words.json if present.)
 
 Not a substitute for listening: it can't judge delivery, pronunciation or a music mix.
 """
-import json, re, subprocess
+import json, os, re, subprocess, sys
 
+SRC = sys.argv[1] if len(sys.argv) > 1 else 'final.mp4'
 FPS_TOL = 0.25   # caption start may lead/lag its first spoken word by this much
 
 
@@ -15,7 +17,7 @@ def run(cmd):
 
 
 def loudness():
-    err = run('ffmpeg -nostats -i final.mp4 -vn -af ebur128=peak=true -f null -').stderr
+    err = run(f'ffmpeg -nostats -i {SRC} -vn -af ebur128=peak=true -f null -').stderr
     tail = err[err.rfind('Summary:'):]
     g = lambda k: re.search(k + r':\s+(-?[\d.]+)', tail)
     return {'integrated_lufs': float(g('I').group(1)), 'lra_lu': float(g('LRA').group(1)),
@@ -23,7 +25,7 @@ def loudness():
 
 
 def pauses(min_len=1.2):
-    err = run(f'ffmpeg -nostats -i final.mp4 -vn -af silencedetect=n=-42dB:d={min_len} -f null -').stderr
+    err = run(f'ffmpeg -nostats -i {SRC} -vn -af silencedetect=n=-42dB:d={min_len} -f null -').stderr
     st = [float(x) for x in re.findall(r'silence_start: (-?[\d.]+)', err)]
     en = [float(x) for x in re.findall(r'silence_end: ([\d.]+)', err)]
     return sorted(((round(b - a, 2), round(a, 1)) for a, b in zip(st, en)), reverse=True)
@@ -44,11 +46,15 @@ def captions():
 
 
 def transcript():
+    if os.path.exists('qa_words.json'):
+        return json.load(open('qa_words.json'))
     from faster_whisper import WhisperModel
-    run('ffmpeg -v error -y -i final.mp4 -vn -ac 1 -ar 16000 qa.wav')
+    run(f'ffmpeg -v error -y -i {SRC} -vn -ac 1 -ar 16000 qa.wav')
     m = WhisperModel('small.en', device='cpu', compute_type='int8', cpu_threads=8)
     segs, _ = m.transcribe('qa.wav', word_timestamps=True)
-    return [(w.start, w.end, w.word.strip()) for s in segs for w in s.words]
+    words = [(w.start, w.end, w.word.strip()) for s in segs for w in s.words]
+    json.dump(words, open('qa_words.json', 'w'))
+    return words
 
 
 def norm(w):

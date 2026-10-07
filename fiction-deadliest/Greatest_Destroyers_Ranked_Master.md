@@ -447,7 +447,22 @@ Same narration v2 takes; pauses tightened in the edit only: sentence gaps capped
 - **Narration v4:** [MP3](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/03a59c8e-e5bb-4452-b2ac-abd95be1a06c.mp3)
 - **Section starts (s):** 0.3, 45.54, 82.44, 121.44, 162.55, 210.46, 259.64, 301.38, 343.62, 384.7, 426.92, 481.23, 527.13. Total 577.4 s, 150 wpm overall.
 
-### Rough cut v5: character identity and ranking graphics (current)
+### Rough cut v6: Frieza, Paul and Galactus on screen (current)
+
+Targeted fixes from your review of v5. Same narration, graphics and timing rules.
+
+- **Frieza:** around 2:35 the screen said "#8 FRIEZA" over an abstract hall of planets. That stretch is now final-form Frieza, arms crossed in front of his fleet (animated), on "ownership". It's followed by first-form Frieza in his hover pod watching a planet from his ship, then the earlier painterly Frieza, and ends on final form again on "planet killer".
+- **Paul:** the reveal is now Muad'Dib himself: stillsuit mask, glowing blue-within-blue eyes, Fremen army behind (animated). It's a stylized illustration with no resemblance to any actor. It also closes his section and stands in for him in the opening montage and the verdict.
+- **Galactus:** two more frame attempts were blocked by the filter (refunded). Instead, his existing character shot (g1) now also plays on "He's our bridge…", so Galactus himself is on screen at the reveal, mid-section and the end.
+- **Rough cut v6:** [MP4, 9:37, 1920×1080](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/80c842cf-2c88-429e-ae21-e414ad1b3768.mp4)
+
+| Key | Shot | Frame | Clip |
+|-----|------|-------|------|
+| f1 | #8 Frieza, final form, fleet behind | Use | Use |
+| f2 | #8 Frieza, first form, hover pod on his ship's bridge | Use | — |
+| p1 | #7 Paul (Muad'Dib), stillsuit mask, blue eyes, Fremen army | Use | Use |
+
+### Rough cut v5: character identity and ranking graphics
 
 Changes made after your visual review of v4. Narration is the v4 track, unchanged.
 
@@ -499,6 +514,8 @@ Working ceiling for the first complete cut: 250 credits, including about 50 in r
 | 11 | Section 1 re-takes (#10 repeat fix) | Seed Audio 1.0, Desmond, speech_rate 0, 48 kHz; 1 full + 4 half takes | 12.90 | 400.25 | Full re-take garbled; two clean half-takes used in rough cut v4 |
 | 12 | 9 character and destruction frames | Nano Banana Pro, 2K, 16:9 | 18.00 | 418.25 | All 9 used in rough cut v5; blocked Thanos frame refunded |
 | 13 | 10 reveal and destruction animations | Kling 3.0 Pro, 5 s, silent | 87.50 | 505.75 | All 10 used in rough cut v5; one filter block refunded and retried |
+| 14 | 3 character frames (Frieza ×2, Paul) | Nano Banana Pro, 2K, 16:9 | 6.00 | 511.75 | All used in rough cut v6; 2 blocked Galactus frames refunded |
+| 15 | 2 character animations (Frieza, Paul) | Kling 3.0 Pro, 5 s, silent | 17.50 | 529.25 | Both used in rough cut v6 |
 
 **Remaining budget:** 127.50 credits under the 250 ceiling. Earlier estimates, now spent: full narration at the same model about 52 credits. The remaining 19 beats at the style-frame setting about 52 credits. That leaves roughly 130 credits under the ceiling for coverage frames and the five hero animations. Quote each animation before generating.
 
