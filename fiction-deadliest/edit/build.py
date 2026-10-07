@@ -404,17 +404,17 @@ def captions(words):
     return ev
 
 
-def overlays(shots):
+def overlays(shots, cp):
     ev = []
-    sec_end = {}
-    for x in shots:
-        sec_end[x['sec']] = x['f1'] / FPS
+    sec_end = cp['sec_end']
     title_until = 0.0
     for x in shots:
         s, e = x['f0'] / FPS, x['f1'] / FPS
         if 'title' in x:
             rank, name, sub = x['title']
             a, b = s + 0.25, min(s + 5.0, sec_end[x['sec']] - 0.1)
+            if x['first']:
+                b = min(b, cp['title_end'][x['sec']])
             title_until = b
             fad = r'{\fad(350,450)}'
             y = 70
@@ -452,28 +452,54 @@ BAND = r'{\an7\pos(0,%d)\p1\bord0\shad0\1c&H000000&\1a&H%s&\fad(250,350)}m 0 0 l
 POP = r'{\an5\pos(960,%d)\fad(200,350)\fscx120\fscy120\t(0,260,\fscx100\fscy100)}'
 
 
-def graphics(shots, words):
-    """Stat cards, persistent rank badges and the verdict scoreboard."""
+def card_plan(shots, words):
+    """Timing shared by titles, badges and stat cards. A stat card lands on its word: if that falls inside the
+    title card, the title gives way (the corner badge takes over); a card never runs across a cut to new imagery."""
     aw = aligned(words)
-    sec_start, sec_end = {}, {}
+    sec_start, sec_end, cuts = {}, {}, {}
     for x in shots:
         sec_start.setdefault(x['sec'], x['f0'] / FPS)
         sec_end[x['sec']] = x['f1'] / FPS
-    ev = []
-    for sec, (rank, name) in BADGES.items():
-        a, b = sec_start[sec] + 5.3, sec_end[sec] - 0.3
-        ev.append(f'Dialogue: 1,{ass_time(a)},{ass_time(b)},BadgeRank,,0,0,0,,{{\\an9\\pos(1836,46)\\fad(400,300)}}{rank}')
-        ev.append(f'Dialogue: 1,{ass_time(a)},{ass_time(b)},BadgeName,,0,0,0,,{{\\an9\\pos(1836,152)\\fad(400,300)}}{name}')
-    for sec, cards in STATS.items():
+        if not (x.get('rev') or x.get('zoomflip')):
+            cuts.setdefault(x['sec'], []).append(x['f0'] / FPS)
+    title_end = {sec: sec_start[sec] + 5.0 for sec in sec_start}
+    cards = {}
+    for sec, lst in STATS.items():
         times = []
-        for word, nth, kick, main, sub in cards:
+        for word, nth, kick, main, sub in lst:
             t = word_time(aw, sec, word, nth)
-            if t is not None:
-                times.append((max(t - 0.1, sec_start[sec] + (5.3 if sec != 12 else 0.4)), kick, main, sub))
+            if t is None:
+                continue
+            a = max(t - 0.1, sec_start[sec] + 0.4)
+            if sec in BADGES:
+                if a < sec_start[sec] + 2.2:
+                    a = sec_start[sec] + 5.3
+                elif a < sec_start[sec] + 5.3:
+                    title_end[sec] = min(title_end[sec], a - 0.15)
+            times.append((a, kick, main, sub))
+        out = []
         for n, (a, kick, main, sub) in enumerate(times):
             b = min(a + STAT_DUR, sec_end[sec] - 0.2)
+            nxt = [q for q in cuts[sec] if q > a + 2.4]
+            if nxt:
+                b = min(b, nxt[0] - 0.1)
             if n + 1 < len(times):
                 b = min(b, times[n + 1][0] - 0.15)
+            out.append((a, b, kick, main, sub))
+        cards[sec] = out
+    return dict(aw=aw, sec_start=sec_start, sec_end=sec_end, title_end=title_end, cards=cards)
+
+
+def graphics(cp):
+    """Stat cards, persistent rank badges and the verdict scoreboard."""
+    aw = cp['aw']
+    ev = []
+    for sec, (rank, name) in BADGES.items():
+        a, b = cp['title_end'][sec] + 0.1, cp['sec_end'][sec] - 0.3
+        ev.append(f'Dialogue: 1,{ass_time(a)},{ass_time(b)},BadgeRank,,0,0,0,,{{\\an9\\pos(1836,46)\\fad(400,300)}}{rank}')
+        ev.append(f'Dialogue: 1,{ass_time(a)},{ass_time(b)},BadgeName,,0,0,0,,{{\\an9\\pos(1836,152)\\fad(400,300)}}{name}')
+    for sec, cards in cp['cards'].items():
+        for a, b, kick, main, sub in cards:
             ev.append(f'Dialogue: 3,{ass_time(a)},{ass_time(b)},Band,,0,0,0,,' + BAND % (330, '60', 360, 360))
             if kick:
                 ev.append(f'Dialogue: 4,{ass_time(a)},{ass_time(b)},StatKick,,0,0,0,,' + POP % 405 + kick)
@@ -528,7 +554,8 @@ def do_final():
     shots, total = timeline()
     words = json.load(open('words.json'))
     with open('gd.ass', 'w') as f:
-        f.write(HEADER + '\n'.join(overlays(shots) + graphics(shots, words) + captions(words)) + '\n')
+        cp = card_plan(shots, words)
+        f.write(HEADER + '\n'.join(overlays(shots, cp) + graphics(cp) + captions(words)) + '\n')
     sh(f'ffmpeg -v error -y -i base.mp4 -i narr.mp3 -vf "ass=gd.ass:fontsdir={FONTS}" '
        f'-c:v libx264 -preset veryfast -crf 19 -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart -shortest final.mp4')
     print('final.mp4 done')
