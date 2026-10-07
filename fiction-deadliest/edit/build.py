@@ -52,7 +52,7 @@ PLAN = [
     # 0 Opening
     [c('01', 5.0, **BIG("FICTION'S GREATEST DESTROYERS", 'RANKED')),
      i('102', at='anime', **L('ANIME  ·  BOOKS  ·  GAMES  ·  COMICS')),
-     c('e1', 1.8, 1.5, at='Eren'), c('05', 1.8, 1.5, at='AM'), c('04', 1.8, 1.5, at='Paul'),
+     c('e1', 1.8, 1.5, at='Eren'), c('05', 1.8, 1.5, at='AM'), c('p1', 1.8, 1.5, at='Paul'),
      c('g1', 1.8, 1.5, at='Galactus'), c('11', 1.8, 1.5, at='Reapers'), c('z1', 1.8, 1.5, at='erase'),
      i('101', at='ranking', **L('RANKED BY DEMONSTRATED DESTRUCTIVE SCALE')), i('02', at='count'),
      i('103', at='second', label='MAJOR SPOILERS AHEAD', label_at='Major')],
@@ -67,12 +67,13 @@ PLAN = [
     # 3 #8 Frieza
     [c('09', 5.0, **T('#8', 'FRIEZA', 'Dragon Ball  ·  individual')), c('v1', at='Vegeta'),
      i('132', at='Earth', **L('EARTH DESTROYED  ·  LATER REVERSED')),
-     i('133', at='empire', **L('WORLDS SOLD ARE NOT ALL WORLDS DESTROYED')), i('09b', at='killer')],
+     i('133', at='empire', **L('WORLDS SOLD ARE NOT ALL WORLDS DESTROYED')), c('f1', at='ownership'),
+     i('f2', at="aren't"), i('09b', at='survivors'), i('f1', at='killer')],
     # 4 #7 Paul
-    [c('04', 5.0, **T('#7', 'PAUL ATREIDES', 'Dune Messiah  ·  leader')),
+    [c('p1', 5.0, **T('#7', 'PAUL ATREIDES', 'Dune Messiah  ·  leader')),
      i('141', at="jihad's", **L("THE JIHAD'S TOLL, NOT HIS PERSONAL KILLS")),
      i('143', at='leadership'), i('142', at='interstellar', label='PLACEMENT VS FRIEZA: EDITORIAL', label_at='position'),
-     i('04b', at='different')],
+     i('p1', at='different')],
     # 5 #6 Tyranids
     [c('t1', 5.0, **T('#6', 'THE TYRANIDS', 'Warhammer 40,000  ·  collective')), c('13', at='collective'),
      i('151', at='cities', label='NO DEATH COUNTER  ·  TOTAL UNKNOWN', label_at='counter'),
@@ -82,7 +83,7 @@ PLAN = [
      i('162', at='apocalypse'), i('11', at='judgment', **L('TOTAL UNKNOWN  ·  PLACEMENT: EDITORIAL'))],
     # 7 #4 Galactus
     [c('g1', 5.0, **T('#4', 'GALACTUS', 'Marvel Comics  ·  individual')),
-     c('g2', at='Not', **L('NOT EVERY WORLD INHABITED  ·  TOTAL UNKNOWN')), i('172', at='bridge'),
+     c('g2', at='Not', **L('NOT EVERY WORLD INHABITED  ·  TOTAL UNKNOWN')), c('g1', None, 2.0, at='bridge'),
      i('171', at='editorial', **L('PLACEMENT: EDITORIAL')), c('10', at='Frieza'), i('173', at='civilization'),
      i('g1', at='survival')],
     # 8 #3 Thanos
@@ -104,7 +105,7 @@ PLAN = [
      c('18', 5.0, at="Pennywise's", **T('', 'PENNYWISE', 'It')), i('18', at='Its', **L('COSMIC ORIGIN, LOCAL VICTIMS')),
      i('103', at='Power', **L('POWER  ·  CRUELTY  ·  CASUALTIES'))],
     # 12 Verdict (stat cards and the scoreboard come from STATS / RECAP)
-    [i('211', **T('', 'THE VERDICT', '')), i('m1', at='Anti-Monitor'), i('04b', at='Paul'), i('05', at='deliberate'),
+    [i('211', **T('', 'THE VERDICT', '')), i('m1', at='Anti-Monitor'), i('p1', at='Paul'), i('05', at='deliberate'),
      i('08', at='fate', **L('SPECIES CRUELTY: THE QU')), i('103', at='This'), c('11', 2.5, 1.0, at='Reapers'), c('g1', 2.5, 1.0, at='Galactus'),
      c('09', 2.5, 1.0, at="Frieza's"), i('211', at='Choose'), c('20', 5.0, at='miss', **BIG('WHO DID WE MISS?', 'BlavkMist Explores'))],
 ]
