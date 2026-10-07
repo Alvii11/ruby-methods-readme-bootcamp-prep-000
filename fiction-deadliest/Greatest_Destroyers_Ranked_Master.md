@@ -463,7 +463,7 @@ Changes made after your visual review of v4. Narration is the v4 track, unchange
 - **Card timing:** each card lands on its spoken word. If that comes during the title, the title gives way to the corner badge early. A card ends at the next cut, so a card about one thing never sits over a shot of another, as "PLANET VEGETA" over the Earth shot did in the first v5 render.
 - **Cosmic sections have their own colour:** Galactus is molten gold, Thanos ash and dull gold, Zeno cold near-white (his own frames keep their colours), and Anti-Monitor crimson. The new frames were made in those palettes; the older violet frames are tinted to match.
 - **Ending:** separate cards for "#1 IN DESTRUCTIVE SCALE: ANTI-MONITOR", "LARGEST STATED TOLL: PAUL ATREIDES, 61 BILLION" and "CRUELTY VERDICT: AM". A three-line scoreboard then appears twice: on "This ranking gives us a winner" and on "Choose the rule…", right before "Who did we miss?".
-- **Rough cut v5:** [MP4, 9:37, 1920×1080](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/e70c2b59-84ae-42d2-8304-8e511b5512e8.mp4)
+- **Rough cut v5:** [MP4, 9:37, 1920×1080](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/47e26bbd-8615-4aed-a2b2-a4e120d18c20.mp4)
 
 New frames (Nano Banana Pro, 2K, 16:9) and clips (Kling 3.0 Pro, 5 s, silent). File IDs are in [edit/assets.json](edit/assets.json) under keys e1, e2, t1, g1, g2, h2, z1, m1, m2 and clip v1:
 
