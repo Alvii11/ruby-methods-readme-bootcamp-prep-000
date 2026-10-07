@@ -447,7 +447,20 @@ Same narration v2 takes; pauses tightened in the edit only: sentence gaps capped
 - **Narration v4:** [MP3](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/03a59c8e-e5bb-4452-b2ac-abd95be1a06c.mp3)
 - **Section starts (s):** 0.3, 45.54, 82.44, 121.44, 162.55, 210.46, 259.64, 301.38, 343.62, 384.7, 426.92, 481.23, 527.13. Total 577.4 s, 150 wpm overall.
 
-### Rough cut v6: Frieza, Paul and Galactus on screen (current)
+### Rough cut v7: editorial typography, subtitles off the picture (current)
+
+You said the dark full-width bands, centered bold captions and pop-in cards looked machine-made. Of the two styles mocked up on real frames ([comparison](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/2d0281f0-4a5e-4850-a16f-7c295daaaeb9.jpg)), you picked B, editorial:
+
+- **Typography:** everything is set in Bebas Neue (tall condensed caps) in warm white with red kickers. There are no boxes or bands; a soft blurred shadow sits behind the text, which fades in and drifts slightly.
+- **Title cards:** lower-left, with a large outlined rank number behind the name and the franchise in red underneath.
+- **Corner badge:** a quiet "04  GALACTUS" line in the top-right.
+- **Caveat labels:** a small top-left line with a red dash, with no black box.
+- **Stat cards:** only the key ones remain: 80%, 61 BILLION, HALF, and the three verdict cards. The others are carried by the narration. Cards sit lower-left in the same style as the titles.
+- **Verdict scoreboard:** a left-aligned list in the same type.
+- **Subtitles:** no longer burned in. They're exported as a YouTube caption file ([SRT](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/029ae38f-0f25-4f4d-8320-82a49ce0f68d.txt); rename it to `.srt` before uploading). A line no longer leaves a single word of a sentence on its own, and "At number eight: Frieza." stays on one line.
+- **Rough cut v7:** [MP4, 9:37, 1920×1080](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/4efb8494-1dc1-46aa-9a1a-b06e931d3419.mp4). No credits; the picture and narration are unchanged from v6.
+
+### Rough cut v6: Frieza, Paul and Galactus on screen
 
 Targeted fixes from your review of v5. Same narration, graphics and timing rules.
 
