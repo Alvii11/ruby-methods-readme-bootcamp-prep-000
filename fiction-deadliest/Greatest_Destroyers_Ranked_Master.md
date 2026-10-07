@@ -386,25 +386,25 @@ Rejected along the way: the first Paul redo (hood down, profile still close to t
 
 ### Hero animations (run 8): Kling 3.0 Pro, 5 s, silent, 16:9, 8.75 credits each
 
-Every countdown entry plus the opening, the bonus and the close gets one motion shot, so no section is a static slide. Job IDs, recorded at submission:
+Every countdown entry plus the opening, the bonus and the close gets one motion shot, so no section is a static slide. All 15 passed a first/last-frame review: characters stay on-model and compositions are preserved. Output is 24 fps at about 1912×1080 or 1928×1076, so the edit scales and crops to 1920×1080.
 
-| Beat | Shot | Job |
-|------|------|-----|
-| 01 | Opening: dead planet pull-back | a80301b7-38c3-4aae-a6a6-ea826a37cc25 |
-| 03 | #10 Rumbling: Titans step forward | e7e0f219-a95f-4e08-b985-9784c8f88318 |
-| 05 | #9 AM: red eye pulses | f444d31f-643b-410d-8b49-3a7e72fbac6e |
-| 09 | #8 Frieza: energy sphere grows | ccf8b6fe-dc13-4937-a7ff-aad5ebc0db83 |
-| 04 | #7 Paul: cloak and banners in wind | 2c2df698-73ac-429c-a279-fbb7a1d48464 |
-| 13 | #6 Tyranids: fleet descends, blight spreads | 2f6d417f-e63e-44e9-a3d2-c4faae5f9b2a |
-| 11 | #5 Reaper lowers into city | 55b56f11-9b44-4866-9d35-db70cb4434f2 |
-| 10 | #4 Galactus (symbolic): planet drained, lights die | 63b138b5-cd45-4b82-b566-a496d16ffcbe |
-| 14 | #3 Thanos (symbolic): gauntlet closes, half the lights fade | 4ccf2f0d-da49-4db7-8d9f-bae266b887a2 |
-| 15 | #2 Zeno: stars wink out around him | 02d2357e-a034-4111-822f-201ec025368e |
-| 16 | #1 Anti-Monitor: universes extinguished | 8ea46dc8-24b3-40e2-a516-f4e71f73e2d4 |
-| 07 | Bonus Qu: branching patterns grow | a5a56c06-f55f-43c0-b57a-c83e4b569012 |
-| 17 | Bonus Crimson King: storm over the tower | 76de394e-671b-4867-af5b-3512911b1c02 |
-| 18 | Bonus Pennywise: balloon over the drain | 1f113d09-5a47-4f6c-898d-84c2e42ce871 |
-| 20 | Close: pull-back from the empty chair | c4348016-7d6d-46e5-9dab-012c36dc8182 |
+| Beat | Shot | Clip |
+|------|------|------|
+| 01 | Opening: dead planet pull-back | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064949_a80301b7-38c3-4aae-a6a6-ea826a37cc25.mp4) · passed review |
+| 03 | #10 Rumbling: Titans step forward | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064912_e7e0f219-a95f-4e08-b985-9784c8f88318.mp4) · passed review |
+| 05 | #9 AM: red eye pulses | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064849_f444d31f-643b-410d-8b49-3a7e72fbac6e.mp4) · passed review |
+| 09 | #8 Frieza: energy sphere grows | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064849_ccf8b6fe-dc13-4937-a7ff-aad5ebc0db83.mp4) · passed review |
+| 04 | #7 Paul: cloak and banners in wind | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064849_2c2df698-73ac-429c-a279-fbb7a1d48464.mp4) · passed review |
+| 13 | #6 Tyranids: fleet descends, blight spreads | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064849_2f6d417f-e63e-44e9-a3d2-c4faae5f9b2a.mp4) · passed review |
+| 11 | #5 Reaper lowers into city | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064912_55b56f11-9b44-4866-9d35-db70cb4434f2.mp4) · passed review |
+| 10 | #4 Galactus (symbolic): planet drained, lights die | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064911_63b138b5-cd45-4b82-b566-a496d16ffcbe.mp4) · passed review |
+| 14 | #3 Thanos (symbolic): gauntlet closes, half the lights fade | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064912_4ccf2f0d-da49-4db7-8d9f-bae266b887a2.mp4) · passed review |
+| 15 | #2 Zeno: stars wink out around him | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064912_02d2357e-a034-4111-822f-201ec025368e.mp4) · passed review |
+| 16 | #1 Anti-Monitor: universes extinguished | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064929_8ea46dc8-24b3-40e2-a516-f4e71f73e2d4.mp4) · passed review |
+| 07 | Bonus Qu: branching patterns grow | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064929_a5a56c06-f55f-43c0-b57a-c83e4b569012.mp4) · passed review |
+| 17 | Bonus Crimson King: storm over the tower | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064949_76de394e-671b-4867-af5b-3512911b1c02.mp4) · passed review |
+| 18 | Bonus Pennywise: balloon over the drain | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064929_1f113d09-5a47-4f6c-898d-84c2e42ce871.mp4) · passed review |
+| 20 | Close: pull-back from the empty chair | [MP4](https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_20261007_064949_c4348016-7d6d-46e5-9dab-012c36dc8182.mp4) · passed review |
 
 ### Credit log
 
@@ -419,7 +419,7 @@ Working ceiling for the first complete cut: 250 credits, including about 50 in r
 | 5 | Full narration, 13 sections | Seed Audio 1.0, Desmond, speech_rate −10, 48 kHz | 61.60 | 75.75 | Done; pauses trimmed; listen at 4:37 |
 | 6 | 17 storyboard frames | GPT Image 2.5, high, 2K, 16:9 | 46.75 | 122.50 | 13 usable, 1 optional redo (09), 3 redos (04, 15, 16). 4 filter-blocked attempts weren't charged |
 | 7 | 6 redo frames | Nano Banana Pro, 2K, 16:9 | 12.00 | 134.50 | 4 kept (Paul, Frieza, Zeno, Anti-Monitor); Galactus and Thanos blocked, not charged |
-| 8 | 15 hero animations | Kling 3.0 Pro, 5 s, silent | ~131.25 (quoted) | ~265.75 | Submitted; the working ceiling was raised after you asked to spend for quality |
+| 8 | 15 hero animations | Kling 3.0 Pro, 5 s, silent | 131.25 | 265.75 | All 15 passed review. The working ceiling was raised after you asked to spend for quality |
 
 **Remaining budget:** 127.50 credits under the 250 ceiling. Earlier estimates, now spent: full narration at the same model about 52 credits. The remaining 19 beats at the style-frame setting about 52 credits. That leaves roughly 130 credits under the ceiling for coverage frames and the five hero animations. Quote each animation before generating.
 
