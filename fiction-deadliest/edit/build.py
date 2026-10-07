@@ -14,7 +14,7 @@ W, H, FPS = 1920, 1080, 24
 RAW = 'https://raw.githubusercontent.com/Alvii11/ruby-methods-readme-bootcamp-prep-000/claude/fiction-deadliest-characters-dwwkbk/fiction-deadliest/'
 CF = 'https://d8j0ntlcm91z4.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/hf_'
 NARR = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/03a59c8e-e5bb-4452-b2ac-abd95be1a06c.mp3'  # v4
-FONTS = '/usr/share/fonts/truetype/higgsfield'
+BEBAS = 'https://raw.githubusercontent.com/google/fonts/main/ofl/bebasneue/BebasNeue-Regular.ttf'
 # Section starts (s) from the narration timing file; section 0 is pulled back to 0.
 STARTS = [0.0, 45.54, 82.44, 121.44, 162.55, 210.46, 259.64, 301.38, 343.62, 384.7, 426.92, 481.23, 527.13]
 
@@ -50,7 +50,7 @@ def A(word, **kw):
 # label_at=word: the stat label appears when that word is spoken.
 PLAN = [
     # 0 Opening
-    [c('01', 5.0, **BIG("FICTION'S GREATEST DESTROYERS", 'RANKED')),
+    [c('01', 5.0, **BIG("FICTION'S GREATEST\\NDESTROYERS", 'RANKED')),
      i('102', at='anime', **L('ANIME  ·  BOOKS  ·  GAMES  ·  COMICS')),
      c('e1', 1.8, 1.5, at='Eren'), c('05', 1.8, 1.5, at='AM'), c('p1', 1.8, 1.5, at='Paul'),
      c('g1', 1.8, 1.5, at='Galactus'), c('11', 1.8, 1.5, at='Reapers'), c('z1', 1.8, 1.5, at='erase'),
@@ -113,16 +113,9 @@ PLAN = [
 # Full-width stat cards: section -> [(anchor word, nth occurrence, kicker, main, sub)].
 # A card never starts before its section's title card has finished.
 STATS = {
-    1: [('eighty', 2, '', '80%', "OF HIS WORLD'S HUMANITY")],
-    2: [('five', 1, '', 'ALL BUT 5', 'HUMANS EXTERMINATED')],
-    3: [('Vegeta', 1, '', 'PLANET VEGETA', 'DESTROYED')],
-    4: [('sixty-one', 1, '', '61 BILLION', 'DEAD IN HIS JIHAD  ·  INDIRECT')],
-    5: [('stripping', 1, '', 'WORLDS', 'STRIPPED OF LIFE  ·  TOTAL UNKNOWN')],
-    6: [('recurring', 1, '', 'CYCLE AFTER CYCLE', 'GALAXY-WIDE HARVESTS')],
-    7: [('consumes', 1, '', 'WORLDS EATEN', 'INCLUDING INHABITED PLANETS')],
-    8: [('half', 1, '', 'HALF', 'OF ALL LIFE IN THE UNIVERSE')],
-    9: [('entire', 1, '', 'AN ENTIRE TIMELINE', 'ERASED')],
-    10: [('infinite', 1, '', 'INFINITE MULTIVERSE', 'REDUCED TO A SINGLE UNIVERSE')],
+    1: [('eighty', 2, 'THE RUMBLING KILLS', '80%', "OF HIS WORLD'S HUMANITY")],
+    4: [('sixty-one', 1, 'DEAD IN HIS NAME', '61 BILLION', "THE JIHAD'S TOLL  ·  INDIRECT")],
+    8: [('half', 1, 'WIPED OUT', 'HALF', 'OF ALL LIFE IN THE UNIVERSE')],
     12: [('Anti-Monitor', 1, '#1 IN DESTRUCTIVE SCALE', 'ANTI-MONITOR', ''),
          ('Paul', 1, 'LARGEST STATED TOLL', 'PAUL ATREIDES', '61 BILLION'),
          ('AM', 1, 'CRUELTY VERDICT', 'AM', 'DELIBERATE CRUELTY BY AN INDIVIDUAL')],
@@ -382,7 +375,9 @@ def script_sections():
     return _SCRIPT
 
 
-def captions(words):
+def caption_chunks(words):
+    """Subtitle lines (start, end, text) from script-aligned word times. A line that would leave one word of a
+    sentence on its own is extended instead, so no caption flashes a single word."""
     aw = aligned(words)
     sw = [(w, k) for w, k, _, _ in aw]
     times = [(t0, t1) for _, _, t0, t1 in aw]
@@ -391,18 +386,38 @@ def captions(words):
         cur.append(n)
         end_sent = w[-1] in '.?!:;,'
         nxt_sec = n + 1 < len(sw) and sw[n + 1][1] != k
-        if (len(cur) >= 7) or (end_sent and len(cur) >= 3) or w[-1] in '.?!' or nxt_sec or n == len(sw) - 1:
+        orphan = n + 1 < len(sw) and sw[n + 1][1] == k and sw[n + 1][0][-1] in '.?!' and w[-1] not in '.?!'
+        soft = (len(cur) >= 7 or (end_sent and len(cur) >= 3)) and not orphan
+        if soft or len(cur) >= 9 or w[-1] in '.?!' or nxt_sec or n == len(sw) - 1:
             chunks.append(cur)
             cur = []
-    ev = []
+    out = []
     for m, ch in enumerate(chunks):
         st = times[ch[0]][0]
         en = times[ch[-1]][1] + 0.25
         if m + 1 < len(chunks):
             en = min(en, times[chunks[m + 1][0]][0] - 0.02)
-        txt = ' '.join(sw[n][0] for n in ch)
-        ev.append(f'Dialogue: 0,{ass_time(st)},{ass_time(en)},Cap,,0,0,0,,{txt}')
-    return ev
+        out.append((st, en, ' '.join(sw[n][0] for n in ch)))
+    return out
+
+
+def srt(words):
+    def t(x):
+        ms = int(round(max(x, 0) * 1000))
+        return f'{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}'
+    return ''.join(f'{n}\n{t(a)} --> {t(b)}\n{txt}\n\n' for n, (a, b, txt) in enumerate(caption_chunks(words), 1))
+
+
+# Editorial lower-left typography (Bebas Neue): no boxes, no pop-ins; a soft blurred shade sits behind the text.
+SHADE_LL = r'{\an7\pos(0,0)\p1\bord0\shad0\blur90\1c&H000000&\1a&H48&\fad(450,500)}m -200 560 l 1350 560 l 1350 1240 l -200 1240{\p0}'
+SHADE_TL = r'{\an7\pos(0,0)\p1\bord0\shad0\blur70\1c&H000000&\1a&H60&\fad(350,450)}m -200 -120 l 1100 -120 l 1100 230 l -200 230{\p0}'
+SHADE_TR = r'{\an7\pos(0,0)\p1\bord0\shad0\blur60\1c&H000000&\1a&H6A&\fad(400,300)}m 1250 -120 l 2100 -120 l 2100 190 l 1250 190{\p0}'
+SHADE_C = r'{\an7\pos(0,0)\p1\bord0\shad0\blur120\1c&H000000&\1a&H50&\fad(500,500)}m 260 300 l 1660 300 l 1660 780 l 260 780{\p0}'
+RED, WHITE = r'{\c&H3A46C8&}', r'{\c&HF4F1EC&}'
+
+
+def dlg(layer, a, b, style, text):
+    return f'Dialogue: {layer},{ass_time(a)},{ass_time(b)},{style},,0,0,0,,{text}'
 
 
 def overlays(shots, cp):
@@ -417,27 +432,29 @@ def overlays(shots, cp):
             if x['first']:
                 b = min(b, cp['title_end'][x['sec']])
             title_until = b
-            fad = r'{\fad(350,450)}'
-            y = 70
-            if rank:
-                ev.append(f'Dialogue: 2,{ass_time(a)},{ass_time(b)},Rank,,0,0,0,,{{\\pos(90,{y})}}{fad}{rank}')
-                y += 175
-            ev.append(f'Dialogue: 2,{ass_time(a + 0.15)},{ass_time(b)},Name,,0,0,0,,{{\\pos(94,{y})}}{fad}{name}')
-            if sub:
-                ev.append(f'Dialogue: 2,{ass_time(a + 0.3)},{ass_time(b)},Sub,,0,0,0,,{{\\pos(98,{y + 90})}}{fad}{sub}')
+            num = rank.lstrip('#') if rank.lstrip('#').isdigit() else ''
+            kick = '  ·  '.join(t for t in ([] if num else [rank]) + [sub] if t)
+            ev.append(dlg(1, a, b, 'Shade', SHADE_LL))
+            if num:
+                ev.append(dlg(2, a, b, 'Num', r'{\an1\pos(64,1046)\fad(700,500)}' + num.zfill(2)))
+            ev.append(dlg(3, a + 0.1, b, 'Name', r'{\an1\move(108,962,122,962)\fad(400,500)}' + name))
+            if kick:
+                ev.append(dlg(3, a + 0.3, b, 'Kick', r'{\an1\pos(116,1014)\fad(500,500)}' + kick))
         if 'label' in x:
             a = max(s + 0.4, x.get('label_t', s) - 0.1)
-            a = max(a, title_until + 0.2)   # labels share the title's corner
+            a = max(a, title_until + 0.2)
             b = min(a + 6.0, e - 0.2)
             if b - a < 1.2:
                 a = max(s + 0.2, title_until + 0.2, b - 2.5)
             if b - a >= 0.8:
-                ev.append(f'Dialogue: 1,{ass_time(a)},{ass_time(b)},Stat,,0,0,0,,{{\\pos(90,80)}}{{\\fad(300,400)}}{x["label"]}')
+                ev.append(dlg(1, a, b, 'Shade', SHADE_TL))
+                ev.append(dlg(2, a, b, 'Label', r'{\an7\pos(96,74)\fad(350,450)}' + RED + '—  ' + WHITE + x['label']))
         if 'big' in x:
             top, bot = x['big']
             a, b = s + 0.3, e - 0.2
-            ev.append(f'Dialogue: 2,{ass_time(a)},{ass_time(b)},Big,,0,0,0,,{{\\pos(960,470)}}{{\\fad(500,500)}}{top}')
-            ev.append(f'Dialogue: 2,{ass_time(a + 0.4)},{ass_time(b)},BigSub,,0,0,0,,{{\\pos(960,590)}}{{\\fad(500,500)}}{bot}')
+            ev.append(dlg(1, a, b, 'Shade', SHADE_C))
+            ev.append(dlg(2, a, b, 'Big', r'{\an2\pos(960,600)\fad(600,600)}' + top))
+            ev.append(dlg(2, a + 0.5, b, 'Kick', r'{\an8\pos(960,628)\fad(600,600)}' + bot))
     return ev
 
 
@@ -447,10 +464,6 @@ def word_time(aw, sec, word, nth=1):
         print(f'WARNING: stat anchor {word!r} #{nth} not found in section {sec}')
         return None
     return hits[nth - 1]
-
-
-BAND = r'{\an7\pos(0,%d)\p1\bord0\shad0\1c&H000000&\1a&H%s&\fad(250,350)}m 0 0 l 1920 0 l 1920 %d l 0 %d{\p0}'
-POP = r'{\an5\pos(960,%d)\fad(200,350)\fscx120\fscy120\t(0,260,\fscx100\fscy100)}'
 
 
 def card_plan(shots, words):
@@ -497,27 +510,26 @@ def graphics(cp):
     ev = []
     for sec, (rank, name) in BADGES.items():
         a, b = cp['title_end'][sec] + 0.1, cp['sec_end'][sec] - 0.3
-        ev.append(f'Dialogue: 1,{ass_time(a)},{ass_time(b)},BadgeRank,,0,0,0,,{{\\an9\\pos(1836,46)\\fad(400,300)}}{rank}')
-        ev.append(f'Dialogue: 1,{ass_time(a)},{ass_time(b)},BadgeName,,0,0,0,,{{\\an9\\pos(1836,152)\\fad(400,300)}}{name}')
+        ev.append(dlg(1, a, b, 'Shade', SHADE_TR))
+        ev.append(dlg(2, a, b, 'Badge', r'{\an9\pos(1852,58)\fad(400,300)}' + RED + rank.lstrip('#').zfill(2) + WHITE + '   ' + name))
     for sec, cards in cp['cards'].items():
         for a, b, kick, main, sub in cards:
-            ev.append(f'Dialogue: 3,{ass_time(a)},{ass_time(b)},Band,,0,0,0,,' + BAND % (330, '60', 360, 360))
+            ev.append(dlg(1, a, b, 'Shade', SHADE_LL))
             if kick:
-                ev.append(f'Dialogue: 4,{ass_time(a)},{ass_time(b)},StatKick,,0,0,0,,' + POP % 405 + kick)
-            ev.append(f'Dialogue: 4,{ass_time(a)},{ass_time(b)},StatMain,,0,0,0,,' + POP % (500 if kick else 470) + main)
+                ev.append(dlg(3, a, b, 'Kick', r'{\an1\pos(116,782)\fad(350,400)}' + kick))
+            ev.append(dlg(3, a + 0.1, b, 'StatMain', r'{\an1\move(106,966,118,966)\fad(350,400)}' + main))
             if sub:
-                ev.append(f'Dialogue: 4,{ass_time(a + 0.2)},{ass_time(b)},StatSub,,0,0,0,,' + POP % (610 if kick else 600) + sub)
+                ev.append(dlg(3, a + 0.3, b, 'StatSub', r'{\an1\pos(116,1016)\fad(400,400)}' + sub))
     for first, last in RECAP:
         a, b = word_time(aw, 12, first), word_time(aw, 12, last)
         if a is None or b is None:
             continue
         a, b = a - 0.1, b - 0.15
-        ev.append(f'Dialogue: 3,{ass_time(a)},{ass_time(b)},Band,,0,0,0,,' + BAND % (250, '48', 560, 560))
+        ev.append(dlg(1, a, b, 'Shade', SHADE_LL.replace('m -200 560 l 1350 560', 'm -200 420 l 1350 420')))
         for n, (kick, val) in enumerate(RECAP_ROWS):
-            y = 330 + n * 170
-            d = 0.25 * n
-            ev.append(f'Dialogue: 4,{ass_time(a + d)},{ass_time(b)},RecapKick,,0,0,0,,{{\\an5\\pos(960,{y})\\fad(250,350)}}{kick}')
-            ev.append(f'Dialogue: 4,{ass_time(a + d)},{ass_time(b)},RecapVal,,0,0,0,,{{\\an5\\pos(960,{y + 62})\\fad(250,350)}}{val}')
+            y, d = 560 + n * 170, 0.25 * n
+            ev.append(dlg(3, a + d, b, 'Kick', r'{\an1\pos(116,%d)\fad(300,400)}' % y + kick))
+            ev.append(dlg(3, a + d, b, 'RecapVal', r'{\an1\pos(110,%d)\fad(300,400)}' % (y + 92) + val))
     return ev
 
 
@@ -530,21 +542,16 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,Montserrat ExtraBold,50,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,0,0,1,3.2,1,2,200,200,64,1
-Style: Rank,Montserrat ExtraBold,170,&H003C14DC,&H003C14DC,&H00000000,&H64000000,0,0,0,0,100,100,0,0,1,4,2,7,0,0,0,1
-Style: Name,Montserrat ExtraBold,76,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,2,0,1,3.5,2,7,0,0,0,1
-Style: Sub,Metropolis ExtraBold,36,&H00D8D8D8,&H00D8D8D8,&H00000000,&H64000000,0,0,0,0,100,100,1,0,1,2.5,1,7,0,0,0,1
-Style: Stat,Montserrat ExtraBold,42,&H00FFFFFF,&H00FFFFFF,&H9A0A0A0A,&H00000000,0,0,0,0,100,100,1,0,3,14,0,7,0,0,0,1
-Style: Big,Montserrat ExtraBold,96,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,3,0,1,4,3,5,0,0,0,1
-Style: BadgeRank,Montserrat ExtraBold,92,&H003C14DC,&H003C14DC,&H00000000,&H64000000,0,0,0,0,100,100,1,0,1,3,2,9,0,0,0,1
-Style: BadgeName,Montserrat ExtraBold,48,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,2,0,1,3,1,9,0,0,0,1
-Style: Band,Montserrat ExtraBold,20,&H00000000,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
-Style: StatKick,Montserrat ExtraBold,46,&H003C14DC,&H003C14DC,&H00000000,&H64000000,0,0,0,0,100,100,4,0,1,2.5,1,5,0,0,0,1
-Style: StatMain,Montserrat ExtraBold,150,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,3,0,1,5,3,5,0,0,0,1
-Style: StatSub,Montserrat ExtraBold,50,&H00E6E6E6,&H00E6E6E6,&H00000000,&H64000000,0,0,0,0,100,100,4,0,1,3,1,5,0,0,0,1
-Style: RecapKick,Montserrat ExtraBold,40,&H003C14DC,&H003C14DC,&H00000000,&H64000000,0,0,0,0,100,100,4,0,1,2.5,1,5,0,0,0,1
-Style: RecapVal,Montserrat ExtraBold,72,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,2,0,1,3.5,2,5,0,0,0,1
-Style: BigSub,Montserrat ExtraBold,56,&H003C14DC,&H003C14DC,&H00000000,&H64000000,0,0,0,0,100,100,6,0,1,3,2,5,0,0,0,1
+Style: Shade,Bebas Neue,20,&H00000000,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+Style: Num,Bebas Neue,520,&HFFFFFFFF,&HFFFFFFFF,&H58F4F1EC,&H00000000,0,0,0,0,100,100,0,0,1,2.5,0,1,0,0,0,1
+Style: Name,Bebas Neue,170,&H00F4F1EC,&H00F4F1EC,&H00000000,&H90000000,0,0,0,0,100,100,6,0,1,0,3,1,0,0,0,1
+Style: Kick,Bebas Neue,46,&H003A46C8,&H003A46C8,&H00000000,&H90000000,0,0,0,0,100,100,10,0,1,0,2,1,0,0,0,1
+Style: Label,Bebas Neue,46,&H00F4F1EC,&H00F4F1EC,&H00000000,&H90000000,0,0,0,0,100,100,6,0,1,0,2,7,0,0,0,1
+Style: Badge,Bebas Neue,52,&H00F4F1EC,&H00F4F1EC,&H00000000,&H90000000,0,0,0,0,100,100,6,0,1,0,2,9,0,0,0,1
+Style: StatMain,Bebas Neue,230,&H00F4F1EC,&H00F4F1EC,&H00000000,&H90000000,0,0,0,0,100,100,6,0,1,0,3,1,0,0,0,1
+Style: StatSub,Bebas Neue,46,&H00B8C2C9,&H00B8C2C9,&H00000000,&H90000000,0,0,0,0,100,100,8,0,1,0,2,1,0,0,0,1
+Style: RecapVal,Bebas Neue,100,&H00F4F1EC,&H00F4F1EC,&H00000000,&H90000000,0,0,0,0,100,100,4,0,1,0,3,1,0,0,0,1
+Style: Big,Bebas Neue,190,&H00F4F1EC,&H00F4F1EC,&H00000000,&H90000000,0,0,0,0,100,100,8,0,1,0,3,2,0,0,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -554,10 +561,14 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 def do_final():
     shots, total = timeline()
     words = json.load(open('words.json'))
+    cp = card_plan(shots, words)
     with open('gd.ass', 'w') as f:
-        cp = card_plan(shots, words)
-        f.write(HEADER + '\n'.join(overlays(shots, cp) + graphics(cp) + captions(words)) + '\n')
-    sh(f'ffmpeg -v error -y -i base.mp4 -i narr.mp3 -vf "ass=gd.ass:fontsdir={FONTS}" '
+        f.write(HEADER + '\n'.join(overlays(shots, cp) + graphics(cp)) + '\n')
+    with open('captions.srt', 'w') as f:   # subtitles ship as a YouTube caption file, not burned in
+        f.write(srt(words))
+    os.makedirs('fonts', exist_ok=True)
+    fetch(BEBAS, 'fonts/BebasNeue-Regular.ttf')
+    sh(f'ffmpeg -v error -y -i base.mp4 -i narr.mp3 -vf "ass=gd.ass:fontsdir=fonts" '
        f'-c:v libx264 -preset veryfast -crf 19 -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart -shortest final.mp4')
     print('final.mp4 done')
 
