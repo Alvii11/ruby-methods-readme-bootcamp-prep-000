@@ -421,6 +421,15 @@ Built by [edit/build.py](edit/build.py) in the Higgsfield sandbox: every clip an
 - **Known issues for v2:** the verdict pedestal image (211) has black bars baked in and shows letterboxed; no music or sound effects yet.
 
 
+### Rough cut v2: faster narration (current)
+
+You found v1's voice slow (122 words per minute overall). The narration was re-recorded at the model's normal speed (`speech_rate` 0, same Desmond voice; nothing was time-stretched) and the pauses were tightened: sentence gaps capped at 0.4 s, reveals 0.8–1.0 s, 1.0 s between sections, 1.5 s before "Now the twist". The edit was re-rendered to the new timings, and the verdict pedestal shot is now cropped to remove its baked-in bars.
+
+- **Rough cut v2:** [MP4, 10:21, 1920×1080](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/f9e5df53-0168-449f-9776-1aeefe2ebff7.mp4)
+- **Narration v2:** [MP3](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/cd21dd62-2550-4bae-a967-3f2bd0b9bf54.mp3)
+- **Pace:** 168 words per minute while speaking (was 153), 140 overall (was 122).
+- **If it still feels slow:** the next step is `speech_rate` +10 to +15 (about 62 credits), or tighter pauses for free.
+
 ### Credit log
 
 Working ceiling for the first complete cut: 250 credits, including about 50 in reserve.
@@ -436,6 +445,7 @@ Working ceiling for the first complete cut: 250 credits, including about 50 in r
 | 7 | 6 redo frames | Nano Banana Pro, 2K, 16:9 | 12.00 | 134.50 | 4 kept (Paul, Frieza, Zeno, Anti-Monitor); Galactus and Thanos blocked, not charged |
 | 8 | 15 hero animations | Kling 3.0 Pro, 5 s, silent | 131.25 | 265.75 | All 15 passed review. The working ceiling was raised after you asked to spend for quality |
 | 9 | 30 coverage frames | Nano Banana Pro, 2K, 16:9 | 60.00 | 325.75 | All usable |
+| 10 | Narration v2, 13 sections | Seed Audio 1.0, Desmond, speech_rate 0, 48 kHz | 61.60 | 387.35 | Faster delivery after your feedback; used in rough cut v2 |
 
 **Remaining budget:** 127.50 credits under the 250 ceiling. Earlier estimates, now spent: full narration at the same model about 52 credits. The remaining 19 beats at the style-frame setting about 52 credits. That leaves roughly 130 credits under the ceiling for coverage frames and the five hero animations. Quote each animation before generating.
 
