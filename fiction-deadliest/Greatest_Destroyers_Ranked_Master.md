@@ -462,6 +462,14 @@ Targeted fixes from your review of v5. Same narration, graphics and timing rules
 | f2 | #8 Frieza, first form, hover pod on his ship's bridge | Use | — |
 | p1 | #7 Paul (Muad'Dib), stillsuit mask, blue eyes, Fremen army | Use | Use |
 
+**Audio and caption QA on the v6 file** ([edit/qa.py](edit/qa.py); [report](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/0c104cc7-4f74-4d54-8c41-825a3742cf56.json)). These are measurements, not a listening check:
+
+- Loudness −16.0 LUFS integrated, true peak −1.5 dBFS, loudness range 2.9 LU. YouTube turns down only louder audio, so this plays slightly under its −14 target; add music without raising the voice peak above about −1 dBFS.
+- Pauses: none longer than 1.2 s except the 1.2 s tail at the end.
+- Captions: 286 captions cover 99.7% of spoken words. Median start offset against a fresh transcript is 0.00 s, and none is off by more than 0.25 s.
+- Nit: about ten captions are a single word that flashes for under 0.7 s ("people.", "Maybe.", "Thanos."), where a 7-word line split just before the end of a sentence.
+- Music: the master has none yet.
+
 ### Rough cut v5: character identity and ranking graphics
 
 Changes made after your visual review of v4. Narration is the v4 track, unchanged.
