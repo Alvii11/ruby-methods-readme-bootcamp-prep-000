@@ -430,13 +430,22 @@ You found v1's voice slow (122 words per minute overall). The narration was re-r
 - **Pace:** 168 words per minute while speaking (was 153), 140 overall (was 122).
 - **If it still feels slow:** the next step is `speech_rate` +10 to +15 (about 62 credits), or tighter pauses for free.
 
-### Rough cut v3: tighter pauses (current, no credits)
+### Rough cut v3: tighter pauses (no credits)
 
 Same narration v2 takes; pauses tightened in the edit only: sentence gaps capped at 0.25 s, reveals 0.6–0.7 s, 0.7 s between sections, 1.0 s before "Now the twist". The voice is untouched.
 
 - **Rough cut v3:** [MP4, 9:44, 1920×1080](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/c4085829-6ad7-4462-985a-8cda757896de.mp4)
 - **Narration v3:** [MP3](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/e94a7924-6801-4088-b66e-870e38a529f1.mp3)
 - **Pace:** 148 words per minute overall (v2 140, v1 122); 168 while speaking.
+
+### Rough cut v4: fixed #10 intro, visuals synced to the words (current)
+
+- **#10 narration fix:** the TTS had said "At number ten" twice. Section 1 is now two clean half-takes joined with a 0.35 s gap. Whisper on the render confirms one "At number 10". The other 12 sections are unchanged.
+- **Shot sync:** each shot and label now starts on the word it illustrates, so it no longer gets an equal share of its section. For example, the Qu title lands on "The Qu", the Crimson King title on "Stephen King's", and Pennywise on "Pennywise's". Frames were checked at each of these points.
+- **Gaps:** long gaps between anchors are filled with reversed hero-clip b-roll or a slow-motion stretch of at most 1.6×, so no still holds longer than about 11 s.
+- **Rough cut v4:** [MP4, 9:37, 1920×1080](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/e73f9e7a-5eec-452b-8245-064232b179e3.mp4)
+- **Narration v4:** [MP3](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/03a59c8e-e5bb-4452-b2ac-abd95be1a06c.mp3)
+- **Section starts (s):** 0.3, 45.54, 82.44, 121.44, 162.55, 210.46, 259.64, 301.38, 343.62, 384.7, 426.92, 481.23, 527.13. Total 577.4 s, 150 wpm overall.
 
 ### Credit log
 
@@ -454,6 +463,7 @@ Working ceiling for the first complete cut: 250 credits, including about 50 in r
 | 8 | 15 hero animations | Kling 3.0 Pro, 5 s, silent | 131.25 | 265.75 | All 15 passed review. The working ceiling was raised after you asked to spend for quality |
 | 9 | 30 coverage frames | Nano Banana Pro, 2K, 16:9 | 60.00 | 325.75 | All usable |
 | 10 | Narration v2, 13 sections | Seed Audio 1.0, Desmond, speech_rate 0, 48 kHz | 61.60 | 387.35 | Faster delivery after your feedback; used in rough cut v2 |
+| 11 | Section 1 re-takes (#10 repeat fix) | Seed Audio 1.0, Desmond, speech_rate 0, 48 kHz; 1 full + 4 half takes | 12.90 | 400.25 | Full re-take garbled; two clean half-takes used in rough cut v4 |
 
 **Remaining budget:** 127.50 credits under the 250 ceiling. Earlier estimates, now spent: full narration at the same model about 52 credits. The remaining 19 beats at the style-frame setting about 52 credits. That leaves roughly 130 credits under the ceiling for coverage frames and the five hero animations. Quote each animation before generating.
 
