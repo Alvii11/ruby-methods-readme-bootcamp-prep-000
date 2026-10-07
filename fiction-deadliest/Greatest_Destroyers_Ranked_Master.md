@@ -414,6 +414,13 @@ Every countdown entry plus the opening, the bonus and the close gets one motion 
 
 Built by [edit/build.py](edit/build.py) in the Higgsfield sandbox: every clip and still timed to the narration sections, slow zoom/pan on stills, fades between sections, burned-in rank titles ("#10 EREN YEAGER"), stat labels ("80% OF HIS WORLD'S HUMANITY", "PLACEMENT: EDITORIAL"), and captions aligned to the script text. No music; add licensed music in your editor.
 
+- **Rough cut v1:** [MP4, 11:53, 1920×1080, H.264/AAC](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/e9627376-cd58-46d2-8092-6918728d68d1.mp4)
+- **Text-free base (no titles/captions/audio), for re-editing:** [MP4](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/b0e8e948-5761-4b55-99ef-458e91bd3518.mp4)
+- **Word timings for captions:** [JSON](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/fb49ce66-a1f0-4005-802a-208a9a5dea52.json)
+- 73 shots; captions aligned to the script (287 caption events), so "Qu", "Frieza" and "Yeager" are spelled as written, not as transcribed.
+- **Known issues for v2:** the verdict pedestal image (211) has black bars baked in and shows letterboxed; no music or sound effects yet.
+
+
 ### Credit log
 
 Working ceiling for the first complete cut: 250 credits, including about 50 in reserve.
