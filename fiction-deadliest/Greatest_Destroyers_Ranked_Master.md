@@ -421,7 +421,7 @@ Built by [edit/build.py](edit/build.py) in the Higgsfield sandbox: every clip an
 - **Known issues for v2:** the verdict pedestal image (211) has black bars baked in and shows letterboxed; no music or sound effects yet.
 
 
-### Rough cut v2: faster narration (current)
+### Rough cut v2: faster narration
 
 You found v1's voice slow (122 words per minute overall). The narration was re-recorded at the model's normal speed (`speech_rate` 0, same Desmond voice; nothing was time-stretched) and the pauses were tightened: sentence gaps capped at 0.4 s, reveals 0.8–1.0 s, 1.0 s between sections, 1.5 s before "Now the twist". The edit was re-rendered to the new timings, and the verdict pedestal shot is now cropped to remove its baked-in bars.
 
@@ -429,6 +429,14 @@ You found v1's voice slow (122 words per minute overall). The narration was re-r
 - **Narration v2:** [MP3](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/cd21dd62-2550-4bae-a967-3f2bd0b9bf54.mp3)
 - **Pace:** 168 words per minute while speaking (was 153), 140 overall (was 122).
 - **If it still feels slow:** the next step is `speech_rate` +10 to +15 (about 62 credits), or tighter pauses for free.
+
+### Rough cut v3: tighter pauses (current, no credits)
+
+Same narration v2 takes; pauses tightened in the edit only: sentence gaps capped at 0.25 s, reveals 0.6–0.7 s, 0.7 s between sections, 1.0 s before "Now the twist". The voice is untouched.
+
+- **Rough cut v3:** [MP4, 9:44, 1920×1080](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/c4085829-6ad7-4462-985a-8cda757896de.mp4)
+- **Narration v3:** [MP3](https://d2ol7oe51mr4n9.cloudfront.net/user_3FINxGcP7afZzLRaKypSj3jzAYA/e94a7924-6801-4088-b66e-870e38a529f1.mp3)
+- **Pace:** 148 words per minute overall (v2 140, v1 122); 168 while speaking.
 
 ### Credit log
 
